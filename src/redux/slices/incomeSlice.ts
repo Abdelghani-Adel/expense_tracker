@@ -15,7 +15,21 @@ const initialState: Income[] = [
     id: 1,
     amount: 7040,
     category: "Salary",
-    description: "",
+    description: "Salary from the company",
+    date: "10/2/2022",
+  },
+  {
+    id: 2,
+    amount: 1450,
+    category: "Reward",
+    description: "Reward from the company",
+    date: "10/2/2022",
+  },
+  {
+    id: 3,
+    amount: 7040,
+    category: "Freelance",
+    description: "Freelancing jobs",
     date: "10/2/2022",
   },
 ];

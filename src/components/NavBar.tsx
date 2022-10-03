@@ -22,7 +22,7 @@ const NavBar = () => {
               Expenses
             </a>
             <a className="nav-link" href="#">
-              Income
+              Incomes
             </a>
           </div>
         </div>
