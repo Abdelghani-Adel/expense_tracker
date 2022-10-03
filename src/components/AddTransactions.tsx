@@ -1,5 +1,5 @@
 import { useState } from "react";
-import AddExpense from "../pages/ExpensesPage/AddExpense";
+import AddExpense from "../pages/ExpensesPage/AddExpense/AddExpense";
 import Portal from "./Portal";
 
 const TestComponent: React.FC = () => {
