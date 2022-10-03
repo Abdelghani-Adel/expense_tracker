@@ -1,10 +1,7 @@
 import { useState } from "react";
 import AddExpense from "../pages/ExpensesPage/AddExpense/AddExpense";
+import AddIncome from "../pages/IncomesPage/AddIncome/AddIncome";
 import Portal from "./Portal";
-
-const TestComponent: React.FC = () => {
-  return <h1 className="text-white modal-overlay">Test</h1>;
-};
 
 const AddTransactions = () => {
   const [incomeShown, setIncomeShown] = useState(false);
@@ -21,7 +18,7 @@ const AddTransactions = () => {
   return (
     <div>
       {incomeShown && (
-        <Portal component={<AddExpense />} closePortal={closePortal} />
+        <Portal component={<AddIncome />} closePortal={closePortal} />
       )}
       {expenseShown && (
         <Portal component={<AddExpense />} closePortal={closePortal} />
