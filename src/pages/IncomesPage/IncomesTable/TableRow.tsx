@@ -1,5 +1,6 @@
 // import { useHistory, useLocation } from "react-router-dom";
-import { Income } from "../../redux/slices/incomeSlice";
+
+import { Income } from "../../../redux/slices/incomeSlice";
 import { TableColumn } from "./tableModels";
 
 interface Props {
@@ -14,10 +15,10 @@ const TableRow: React.FC<Props> = (props) => {
   return (
     <tr className="cursor--pointer">
       <th scope="row">{props.index + 1}</th>
-      {props.columns.map((column) => (
-        // <td key={column.id}>{props.object[`${column.title}`]}</td>
-        <td key={column.id}>test</td>
-      ))}
+      <td>{props.object.amount}</td>
+      <td>{props.object.category}</td>
+      <td>{props.object.description}</td>
+      <td>{props.object.date}</td>
     </tr>
   );
 };

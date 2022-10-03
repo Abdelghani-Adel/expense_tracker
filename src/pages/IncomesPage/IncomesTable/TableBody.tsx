@@ -1,4 +1,4 @@
-import { Income } from "../../redux/slices/incomeSlice";
+import { Income } from "../../../redux/slices/incomeSlice";
 import { TableColumn } from "./tableModels";
 import TableRow from "./TableRow";
 
