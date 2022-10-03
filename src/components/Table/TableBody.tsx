@@ -1,8 +1,9 @@
-import { TableColumn, TableDataObject } from "./tableModels";
+import { Income } from "../../redux/slices/incomeSlice";
+import { TableColumn } from "./tableModels";
 import TableRow from "./TableRow";
 
 interface Props {
-  dataArray: TableDataObject[];
+  dataArray: Income[];
   columns: TableColumn[];
   basePath: string;
 }

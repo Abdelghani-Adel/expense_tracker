@@ -1,4 +1,5 @@
 import { Fragment } from "react";
+import IncomeTransTable from "./IncomeTransTable";
 import Totals from "./Totals";
 
 const Dashboard = () => {
@@ -6,6 +7,7 @@ const Dashboard = () => {
     <Fragment>
       <Totals />
       <hr />
+      <IncomeTransTable />
     </Fragment>
   );
 };

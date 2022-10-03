@@ -1,11 +1,4 @@
-export type TableDataObject = {
-  id: number;
-  date: string;
-  name: string;
-  amount: number;
-  category: string;
-  description: string;
-};
+import { Income } from "../../redux/slices/incomeSlice";
 
 export type TableColumn = {
   id: number;
@@ -14,7 +7,7 @@ export type TableColumn = {
 };
 
 export default interface TableProps {
-  dataArray: TableDataObject[];
+  dataArray: Income[];
   columns: TableColumn[];
   dataTitle: string;
   basePath: string;

@@ -1,7 +1,12 @@
 import { Fragment } from "react";
+import { Income } from "../../redux/slices/incomeSlice";
 import TableBody from "./TableBody";
 import TableHead from "./TableHead";
 import TableProps from "./tableModels";
+
+interface Props {
+  dataArray: Income[];
+}
 
 const Table: React.FC<TableProps> = (props) => {
   return (
