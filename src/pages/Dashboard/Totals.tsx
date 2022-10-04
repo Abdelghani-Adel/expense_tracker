@@ -16,6 +16,8 @@ const Totals = () => {
   for (let i = 0; i < incomesState.length; i++) {
     totalIncomes += incomesState[i].amount;
   }
+  console.log(totalExpenses);
+
   let balance = totalIncomes - totalExpenses;
 
   const incomeClick = () => navigate("/incomes");
