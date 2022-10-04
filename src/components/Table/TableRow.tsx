@@ -1,12 +1,9 @@
-// import { useHistory, useLocation } from "react-router-dom";
-
 import { useNavigate } from "react-router-dom";
-import { Income } from "../../../redux/slices/incomeSlice";
-import { TableColumn } from "./tableModels";
+import { TableColumn, TableObject } from "./tableModels";
 
 interface Props {
   key: number;
-  object: Income;
+  object: TableObject;
   index: number;
   columns: TableColumn[];
   basePath: string;
@@ -16,7 +13,7 @@ const TableRow: React.FC<Props> = (props) => {
   let navigate = useNavigate();
 
   const clickHandler = () => {
-    navigate(`/expenses/${props.object.id}`);
+    navigate(`/${props.basePath}/${props.object.id}`);
   };
 
   return (

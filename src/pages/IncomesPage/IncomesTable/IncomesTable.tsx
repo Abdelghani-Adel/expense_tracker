@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import { selectIncomes } from "../../../redux/slices/incomeSlice";
-import Table from "./Table";
+import Table from "../../../components/Table/Table";
 
 const IncomesTable = () => {
   const incomesState = useSelector(selectIncomes);
@@ -29,7 +29,7 @@ const IncomesTable = () => {
         dataArray={incomesState}
         columns={columns}
         dataTitle="Income Transactions"
-        basePath=""
+        basePath="incomes"
       />
     </div>
   );

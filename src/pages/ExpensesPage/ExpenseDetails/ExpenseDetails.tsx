@@ -44,7 +44,6 @@ const ExpenseDetails: React.FC = () => {
   };
 
   const submitHandler = (e: React.FormEvent) => {
-    console.log(expenseObject);
     e.preventDefault();
     dispatch(expenseActions.editExpense(expenseObject));
     navigate(-1);
