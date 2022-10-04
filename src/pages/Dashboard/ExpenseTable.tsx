@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
-import { selectExpenses } from "../../../redux/slices/expenseSlice";
-import Table from "../../../components/Table/Table";
+import { selectExpenses } from "../../redux/slices/expenseSlice";
+import Table from "../../components/Table/Table";
 
 const ExpensesTable = () => {
   const expensesState = useSelector(selectExpenses);

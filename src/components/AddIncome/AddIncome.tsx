@@ -1,14 +1,15 @@
 import React, { useState, useRef } from "react";
 import { useDispatch } from "react-redux";
-import { Expense, expenseActions } from "../../../redux/slices/expenseSlice";
-import ExpenseAmount from "./ExpenseAmount";
-import ExpenseDescription from "./ExpenseAmount copy 2";
-import ExpenseCategory from "./ExpenseCategory";
+import { Expense, expenseActions } from "../../redux/slices/expenseSlice";
+import IncomeAmount from "./IncomeAmount";
+import IncomeDescription from "./IncomeDescription";
+import IncomeCategory from "./IncomeCategory";
+import { Income, incomeActions } from "../../redux/slices/incomeSlice";
 
-const AddExpense = () => {
+const AddIncome = () => {
   const dispatch = useDispatch();
 
-  const [expenseObject, setExpenseObject] = useState<Expense>({
+  const [incomeObject, setIncomeObject] = useState<Income>({
     id: Math.random(),
     amount: 0,
     category: "category",
@@ -23,26 +24,26 @@ const AddExpense = () => {
   };
 
   const onBlurHandler = (input: BlurInput) => {
-    setExpenseObject((prev) => ({ ...prev, ...input }));
+    setIncomeObject((prev) => ({ ...prev, ...input }));
   };
 
   const submitHandler = (e: React.FormEvent) => {
     e.preventDefault();
 
-    dispatch(expenseActions.addExpense(expenseObject));
+    dispatch(incomeActions.addIncome(incomeObject));
   };
 
   return (
     <div className="modal-overlay w-25 bg-white p-2 rounded">
       <form action="" className=" g-2" onSubmit={submitHandler}>
-        <h4 className="text-secondary text-center my-3">Adding New Expense</h4>
-        <ExpenseAmount onBlur={onBlurHandler} />
-        <ExpenseCategory onBlur={onBlurHandler} />
-        <ExpenseDescription onBlur={onBlurHandler} />
+        <h4 className="text-secondary text-center my-3">Adding New Income</h4>
+        <IncomeAmount onBlur={onBlurHandler} />
+        <IncomeCategory onBlur={onBlurHandler} />
+        <IncomeDescription onBlur={onBlurHandler} />
         <button className="btn btn-danger d-block m-auto w-25">Add</button>
       </form>
     </div>
   );
 };
 
-export default AddExpense;
+export default AddIncome;

@@ -1,7 +1,5 @@
-import ExpensesTable from "./ExpenseTable/ExpenseTable";
-
 const ExpensePage = () => {
-  return <ExpensesTable />;
+  return <h1></h1>;
 };
 
 export default ExpensePage;

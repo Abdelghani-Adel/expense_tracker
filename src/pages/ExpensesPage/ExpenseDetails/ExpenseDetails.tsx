@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
+import DetailsForm from "../../../components/DetailsForm/DetailsForm";
 import {
   Expense,
   expenseActions,
@@ -52,6 +53,7 @@ const ExpenseDetails: React.FC = () => {
   return (
     <div className="row p-5">
       <h2 className="text-center">Expense Details</h2>
+      <DetailsForm dataObject={expense} submitHandler={submitHandler} />
       <form className="d-flex align-items-end" onSubmit={submitHandler}>
         <ExpenseAmount
           onBlur={blurHandler}

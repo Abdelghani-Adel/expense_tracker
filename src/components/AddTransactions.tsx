@@ -1,6 +1,6 @@
 import { useState } from "react";
-import AddExpense from "../pages/ExpensesPage/AddExpense/AddExpense";
-import AddIncome from "../pages/IncomesPage/AddIncome/AddIncome";
+import AddExpense from "./AddExpense/AddExpense";
+import AddIncome from "./AddIncome/AddIncome";
 import Portal from "./Portal";
 
 const AddTransactions = () => {

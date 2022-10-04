@@ -1,7 +1,5 @@
-import IncomesTable from "./IncomesTable/IncomesTable";
-
 const IncomesPage = () => {
-  return <IncomesTable />;
+  return <h1></h1>;
 };
 
 export default IncomesPage;

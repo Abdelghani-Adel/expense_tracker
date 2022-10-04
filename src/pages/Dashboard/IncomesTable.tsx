@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
-import { selectIncomes } from "../../../redux/slices/incomeSlice";
-import Table from "../../../components/Table/Table";
+import { selectIncomes } from "../../redux/slices/incomeSlice";
+import Table from "../../components/Table/Table";
 
 const IncomesTable = () => {
   const incomesState = useSelector(selectIncomes);
