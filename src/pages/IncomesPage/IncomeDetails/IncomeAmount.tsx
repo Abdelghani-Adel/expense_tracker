@@ -6,7 +6,7 @@ interface Props {
 
 const IncomeAmount: React.FC<Props> = (props) => {
   const blurHandler = (e: React.FocusEvent<HTMLInputElement>) => {
-    props.onBlur({ amount: e.target.value });
+    props.onBlur({ amount: Number(e.target.value) });
   };
   return (
     <div className="col-1 me-3">

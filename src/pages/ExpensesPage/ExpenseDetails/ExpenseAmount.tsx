@@ -6,13 +6,11 @@ interface Props {
 
 const ExpenseAmount: React.FC<Props> = (props) => {
   const blurHandler = (e: React.FocusEvent<HTMLInputElement>) => {
-    props.onBlur({ amount: e.target.value });
+    props.onBlur({ amount: Number(e.target.value) });
   };
   return (
     <div className="col-1 me-3">
-      <label htmlFor="" className="form-label">
-        Amount
-      </label>
+      <label className="form-label">Amount</label>
       <input
         type="number"
         className="form-control"

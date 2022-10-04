@@ -8,15 +8,13 @@ const Totals = () => {
   const incomesState = useSelector(selectIncomes);
   let navigate = useNavigate();
 
-  let totalExpenses = 0;
-  let totalIncomes = 0;
-  for (let i = 0; i < expensesState.length; i++) {
-    totalExpenses += expensesState[i].amount;
-  }
-  for (let i = 0; i < incomesState.length; i++) {
-    totalIncomes += incomesState[i].amount;
-  }
-  console.log(totalExpenses);
+  let totalExpenses = expensesState.reduce((accu, object) => {
+    return accu + object.amount;
+  }, 0);
+
+  let totalIncomes = incomesState.reduce((result, object) => {
+    return result + object.amount;
+  }, 0);
 
   let balance = totalIncomes - totalExpenses;
 
