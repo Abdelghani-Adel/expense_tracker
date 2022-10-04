@@ -16,12 +16,12 @@ const ExpenseDetails: React.FC = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const params = useParams();
-  const expensesState = useSelector(selectExpenses);
 
   // a boolean state to be used for deciding editing availability for the form
   const [editable, setEditable] = useState<boolean>(false);
 
   // Selecting the expense object from the state
+  const expensesState = useSelector(selectExpenses);
   const expenseIndex = expensesState.findIndex(
     (expense) => expense.id == Number(params.id)
   );

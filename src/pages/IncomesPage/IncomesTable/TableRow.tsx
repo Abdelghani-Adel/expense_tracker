@@ -1,5 +1,6 @@
 // import { useHistory, useLocation } from "react-router-dom";
 
+import { useNavigate } from "react-router-dom";
 import { Income } from "../../../redux/slices/incomeSlice";
 import { TableColumn } from "./tableModels";
 
@@ -12,8 +13,12 @@ interface Props {
 }
 
 const TableRow: React.FC<Props> = (props) => {
+  let navigate = useNavigate();
+  const navigationhandler = () => {
+    navigate(`/incomes/${props.object.id}`);
+  };
   return (
-    <tr className="cursor--pointer">
+    <tr className="cursor--pointer" onClick={navigationhandler}>
       <th scope="row">{props.index + 1}</th>
       <td>{props.object.amount}</td>
       <td>{props.object.category}</td>

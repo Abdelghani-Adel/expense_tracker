@@ -3,6 +3,7 @@ import NavBar from "./components/NavBar";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import ExpenseDetails from "./pages/ExpensesPage/ExpenseDetails/ExpenseDetails";
 import ExpensePage from "./pages/ExpensesPage/ExpensePage";
+import IncomeDetails from "./pages/IncomesPage/IncomeDetails/IncomeDetails";
 import IncomesPage from "./pages/IncomesPage/IncomesPage";
 
 function App() {
@@ -15,7 +16,7 @@ function App() {
           <Route path="expenses" element={<ExpensePage />} />
           <Route path="expenses/:id" element={<ExpenseDetails />} />
           <Route path="incomes" element={<IncomesPage />} />
-          <Route path="incomes/:id" element={<IncomesPage />} />
+          <Route path="incomes/:id" element={<IncomeDetails />} />
         </Routes>
       </div>
     </div>
