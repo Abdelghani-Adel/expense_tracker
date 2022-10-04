@@ -1,12 +1,12 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import DetailsForm from "../../../components/DetailsForm/DetailsForm";
+import DetailsForm from "../../components/DetailsForm/DetailsForm";
 import {
   Expense,
   expenseActions,
   selectExpenses,
-} from "../../../redux/slices/expenseSlice";
+} from "../../redux/slices/expenseSlice";
 
 const ExpenseDetails: React.FC = () => {
   const dispatch = useDispatch();
