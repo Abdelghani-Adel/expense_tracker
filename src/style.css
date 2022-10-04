@@ -16,3 +16,7 @@
   z-index: 100;
   /* overflow: hidden; */
 }
+
+.cursor--pointer {
+  cursor: pointer;
+}

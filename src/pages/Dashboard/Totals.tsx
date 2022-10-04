@@ -25,26 +25,26 @@ const Totals = () => {
     <div className="col-12 my-2">
       <div className="row g-3">
         <h2 className="text-center fw-bolder">Total Amounts</h2>
-        <div className="col-md-3" onClick={incomeClick}>
+        <div className="col-md-3 cursor--pointer" onClick={incomeClick}>
           <div className="border border-2 rounded p-1 text-success">
             <h4 className="text-secondary fw-bold">Income</h4>
             <p className="display-6 fw-bolder">{totalIncomes}$</p>
           </div>
         </div>
-        <div className="col-md-3" onClick={expenseClick}>
+        <div className="col-md-3 cursor--pointer" onClick={expenseClick}>
           <div className="border border-2 rounded p-1 text-danger">
             <h4 className="text-secondary fw-bold">Expenses</h4>
             <p className="display-6 fw-bolder">{totalExpenses}$</p>
           </div>
         </div>
-        <div className="col-md-3">
+        <div className="col-md-3 cursor--pointer">
           <div className="border border-2 rounded p-1 text-primary">
             <h4 className="text-secondary fw-bold">Balance</h4>
             <p className="display-6 fw-bolder">{balance}$</p>
           </div>
         </div>
 
-        <div className="col-md-3">
+        <div className="col-md-3 cursor--pointer">
           <div className="border border-2 rounded p-1 text-success">
             <h4 className="text-secondary fw-bold">Savings</h4>
             <p className="display-6 fw-bolder">0$</p>

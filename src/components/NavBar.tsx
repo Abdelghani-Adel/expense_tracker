@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const NavBar = () => {
   return (
@@ -17,15 +17,15 @@ const NavBar = () => {
         </button>
         <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div className="navbar-nav">
-            <Link to="dashboard" className="nav-link">
+            <NavLink to="dashboard" className="nav-link">
               Dashboard
-            </Link>
-            <Link to="expenses" className="nav-link">
+            </NavLink>
+            <NavLink to="expenses" className="nav-link">
               Expenses
-            </Link>
-            <Link to="incomes" className="nav-link">
+            </NavLink>
+            <NavLink to="incomes" className="nav-link">
               Incomes
-            </Link>
+            </NavLink>
           </div>
         </div>
       </div>
