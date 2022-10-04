@@ -7,23 +7,25 @@ import FormDate from "./FormDate";
 import FormDescription from "./FormDescription";
 
 interface DataObject {
-  id?: number;
-  amount?: number;
-  date?: string;
-  category?: string;
-  description?: string;
+  id: number;
+  amount: number;
+  date: string;
+  category: string;
+  description: string;
 }
 
 interface Props {
   dataObject: DataObject;
-  submitHandler: (e: React.FormEvent) => any;
+  dispatchFun: (input: DataObject) => any;
 }
 
 const DetailsForm: React.FC<Props> = (props) => {
   const navigate = useNavigate();
   const [canEdit, setCanEdit] = useState<boolean>(false);
 
-  const [newDataObject, setNewDataObject] = useState({ ...props.dataObject });
+  const [newDataObject, setNewDataObject] = useState<DataObject>({
+    ...props.dataObject,
+  });
 
   const activateEdit = () => setCanEdit(true);
 
@@ -34,7 +36,8 @@ const DetailsForm: React.FC<Props> = (props) => {
   const submitHandler = (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Dispatch Action
+    props.dispatchFun(newDataObject);
+
     navigate(-1);
   };
 
