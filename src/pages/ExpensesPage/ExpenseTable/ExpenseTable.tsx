@@ -23,7 +23,7 @@ const ExpensesTable = () => {
     },
   ];
   return (
-    <>
+    <div className="col-6">
       <h3 className="text-center fw-bold">Expenses Transactions</h3>
       <Table
         dataArray={expensesState}
@@ -31,7 +31,7 @@ const ExpensesTable = () => {
         dataTitle="Income Transactions"
         basePath=""
       />
-    </>
+    </div>
   );
 };
 

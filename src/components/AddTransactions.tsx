@@ -23,11 +23,11 @@ const AddTransactions = () => {
       {expenseShown && (
         <Portal component={<AddExpense />} closePortal={closePortal} />
       )}
-      <button className="btn btn-success" onClick={showIncomeForm}>
-        Add Income
+      <button className="btn btn-success me-2" onClick={showIncomeForm}>
+        New Income
       </button>
       <button className="btn btn-danger" onClick={showExpenseForm}>
-        Add Expense
+        New Expense
       </button>
     </div>
   );
