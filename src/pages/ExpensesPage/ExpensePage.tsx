@@ -1,5 +1,18 @@
+import AddExpenseBtn from "../../components/AddTransactions/AddExpenseBtn";
+import ExpensesTable from "../Dashboard/ExpenseTable";
+
 const ExpensePage = () => {
-  return <h1></h1>;
+  return (
+    <div className="row p-2">
+      <div>
+        <AddExpenseBtn />
+      </div>
+
+      <div>
+        <ExpensesTable />
+      </div>
+    </div>
+  );
 };
 
 export default ExpensePage;

@@ -16,6 +16,7 @@ interface DataObject {
 
 interface Props {
   dataObject: DataObject;
+  categories: { id: number; title: string; subCategories?: any }[];
   dispatchFun: (input: DataObject) => any;
 }
 
@@ -50,6 +51,7 @@ const DetailsForm: React.FC<Props> = (props) => {
       />
       <FormCategory
         category={props.dataObject.category}
+        categories={props.categories}
         onBlur={onBlurHandler}
         readonly={!canEdit}
       />

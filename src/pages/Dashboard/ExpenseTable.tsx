@@ -23,8 +23,8 @@ const ExpensesTable = () => {
     },
   ];
   return (
-    <div className="col-6">
-      <h3 className="text-center fw-bold">Expenses Transactions</h3>
+    <div>
+      <h3 className="text-center fw-bold mb-3">Expenses Transactions</h3>
       <Table
         dataArray={expensesState}
         columns={columns}

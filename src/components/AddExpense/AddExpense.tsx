@@ -2,7 +2,7 @@ import React, { useState, useRef } from "react";
 import { useDispatch } from "react-redux";
 import { Expense, expenseActions } from "../../redux/slices/expenseSlice";
 import ExpenseAmount from "./ExpenseAmount";
-import ExpenseDescription from "./ExpenseAmount";
+import ExpenseDescription from "./ExpenseDescription";
 import ExpenseCategory from "./ExpenseCategory";
 
 const AddExpense = () => {

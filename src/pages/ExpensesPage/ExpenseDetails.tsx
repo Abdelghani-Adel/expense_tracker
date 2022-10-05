@@ -5,6 +5,7 @@ import {
   Expense,
   expenseActions,
   selectExpenses,
+  selectExpensesCategories,
 } from "../../redux/slices/expenseSlice";
 
 const ExpenseDetails: React.FC = () => {
@@ -18,6 +19,9 @@ const ExpenseDetails: React.FC = () => {
   );
   const expense = expensesState[expenseIndex];
 
+  // Selecting the categories
+  const categories = useSelector(selectExpensesCategories);
+
   const dispatchFun = (input: Expense) => {
     dispatch(expenseActions.editExpense(input));
   };
@@ -25,7 +29,11 @@ const ExpenseDetails: React.FC = () => {
   return (
     <div className="row p-5">
       <h2 className="text-center">Expense Details</h2>
-      <DetailsForm dataObject={expense} dispatchFun={dispatchFun} />
+      <DetailsForm
+        categories={categories}
+        dataObject={expense}
+        dispatchFun={dispatchFun}
+      />
     </div>
   );
 };

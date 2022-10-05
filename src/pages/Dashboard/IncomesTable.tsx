@@ -23,8 +23,8 @@ const IncomesTable = () => {
     },
   ];
   return (
-    <div className="col-6">
-      <h3 className="text-center fw-bold">Incomes Transactions</h3>
+    <div>
+      <h3 className="text-center fw-bold mb-3">Incomes Transactions</h3>
       <Table
         dataArray={incomesState}
         columns={columns}

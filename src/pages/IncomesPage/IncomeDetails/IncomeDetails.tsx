@@ -5,6 +5,7 @@ import {
   Income,
   incomeActions,
   selectIncomes,
+  selectIncomesCategories,
 } from "../../../redux/slices/incomeSlice";
 
 const IncomeDetails: React.FC = () => {
@@ -22,10 +23,16 @@ const IncomeDetails: React.FC = () => {
     dispatch(incomeActions.editIncome(input));
   };
 
+  const categories = useSelector(selectIncomesCategories);
+
   return (
     <div className="row p-5">
       <h2 className="text-center">Income Details</h2>
-      <DetailsForm dataObject={income} dispatchFun={dispatchFun} />
+      <DetailsForm
+        categories={categories}
+        dataObject={income}
+        dispatchFun={dispatchFun}
+      />
     </div>
   );
 };

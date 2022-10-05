@@ -22,8 +22,8 @@ const Totals = () => {
   const expenseClick = () => navigate("/expenses");
 
   return (
-    <div className="col-12 my-2">
-      <div className="row g-3">
+    <div className="col-12 mt-2 mb-4">
+      <div className="row g-3 justify-content-center">
         <h2 className="text-center fw-bolder">Total Amounts</h2>
         <div className="col-md-3 cursor--pointer" onClick={incomeClick}>
           <div className="border border-2 rounded p-1 text-success">
@@ -41,13 +41,6 @@ const Totals = () => {
           <div className="border border-2 rounded p-1 text-primary">
             <h4 className="text-secondary fw-bold">Balance</h4>
             <p className="display-6 fw-bolder">{balance}$</p>
-          </div>
-        </div>
-
-        <div className="col-md-3 cursor--pointer">
-          <div className="border border-2 rounded p-1 text-success">
-            <h4 className="text-secondary fw-bold">Savings</h4>
-            <p className="display-6 fw-bolder">0$</p>
           </div>
         </div>
       </div>

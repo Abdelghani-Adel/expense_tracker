@@ -1,5 +1,17 @@
+import AddIncomeBtn from "../../components/AddTransactions/AddIncomeBTn";
+import IncomesTable from "../Dashboard/IncomesTable";
+
 const IncomesPage = () => {
-  return <h1></h1>;
+  return (
+    <div className="row p-2">
+      <div>
+        <AddIncomeBtn />
+      </div>
+      <div>
+        <IncomesTable />
+      </div>
+    </div>
+  );
 };
 
 export default IncomesPage;

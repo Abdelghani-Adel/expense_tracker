@@ -10,60 +10,106 @@ export interface Expense {
   date: string;
 }
 
-const initialState: Expense[] = [
-  {
-    id: 1,
-    amount: 400,
-    category: "Gas",
-    description: "Filling my car",
-    date: "10/2/2022",
-  },
-  {
-    id: 2,
-    amount: 250,
-    category: "Market",
-    description: "Buying fruites from the market",
-    date: "10/3/2022",
-  },
-  {
-    id: 3,
-    amount: 150,
-    category: "Doctor",
-    description: "Dentist Doctor",
-    date: "10/3/2022",
-  },
-];
+const initialState = {
+  expensesCategories: [
+    {
+      id: 1,
+      title: "Car",
+      subCategories: [],
+    },
+    {
+      id: 2,
+      title: "Home",
+      subCategories: [],
+    },
+    {
+      id: 3,
+      title: "Market",
+      subCategories: [],
+    },
+    {
+      id: 4,
+      title: "Shopping",
+      subCategories: [],
+    },
+  ],
+
+  expensesTransactions: [
+    {
+      id: 1,
+      amount: 400,
+      category: "Gas",
+      description: "Filling my car",
+      date: "10/2/2022",
+    },
+    {
+      id: 2,
+      amount: 250,
+      category: "Market",
+      description: "Buying fruites from the market",
+      date: "10/3/2022",
+    },
+    {
+      id: 3,
+      amount: 150,
+      category: "Doctor",
+      description: "Dentist Doctor",
+      date: "10/3/2022",
+    },
+  ],
+};
+
+// const initialState: Expense[] = [
+//   {
+//     id: 1,
+//     amount: 400,
+//     category: "Gas",
+//     description: "Filling my car",
+//     date: "10/2/2022",
+//   },
+//   {
+//     id: 2,
+//     amount: 250,
+//     category: "Market",
+//     description: "Buying fruites from the market",
+//     date: "10/3/2022",
+//   },
+//   {
+//     id: 3,
+//     amount: 150,
+//     category: "Doctor",
+//     description: "Dentist Doctor",
+//     date: "10/3/2022",
+//   },
+// ];
 
 const expenseSlice = createSlice({
   name: "expenses",
   initialState,
   reducers: {
     addExpense: (state, action: PayloadAction<Expense>) => {
-      state.push(action.payload);
+      state.expensesTransactions.push(action.payload);
     },
     removeExpense: (state, action: PayloadAction<number>) => {
-      const fitleredExpenses = state.filter(
+      const fitleredExpenses = state.expensesTransactions.filter(
         (expense) => expense.id !== action.payload
       );
-      state = fitleredExpenses;
+      state.expensesTransactions = fitleredExpenses;
     },
     editExpense: (state, action: PayloadAction<Expense>) => {
-      const index = state.findIndex(
+      const index = state.expensesTransactions.findIndex(
         (expense) => expense.id === action.payload.id
       );
-      state[index] = action.payload;
+      state.expensesTransactions[index] = action.payload;
     },
-    // calculateExpenses: (state) => {
-    //   let totalExpenses = 0;
-    //   for (let i = 0; i < state.length; i++) {
-    //     totalExpenses += state[i].amount;
-    //   }
-    //   return totalExpenses;
-    // },
   },
 });
 
-export const selectExpenses = (state: RootState) => state.expenses;
+export const selectExpenses = (state: RootState) =>
+  state.expenses.expensesTransactions;
+
+export const selectExpensesCategories = (state: RootState) =>
+  state.expenses.expensesCategories;
 
 export const expenseActions = expenseSlice.actions;
 export default expenseSlice;
