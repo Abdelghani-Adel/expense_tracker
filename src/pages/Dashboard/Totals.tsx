@@ -1,21 +1,13 @@
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { selectExpenses } from "../../redux/slices/expenseSlice";
-import { selectIncomes } from "../../redux/slices/incomeSlice";
+import { selectTotalExpenses } from "../../redux/slices/expenseSlice";
+import { selectTotalIncomes } from "../../redux/slices/incomeSlice";
 
 const Totals = () => {
-  const expensesState = useSelector(selectExpenses);
-  const incomesState = useSelector(selectIncomes);
   let navigate = useNavigate();
 
-  let totalExpenses = expensesState.reduce((accu, object) => {
-    return accu + object.amount;
-  }, 0);
-
-  let totalIncomes = incomesState.reduce((result, object) => {
-    return result + object.amount;
-  }, 0);
-
+  let totalExpenses = useSelector(selectTotalExpenses);
+  let totalIncomes = useSelector(selectTotalIncomes);
   let balance = totalIncomes - totalExpenses;
 
   const incomeClick = () => navigate("/incomes");

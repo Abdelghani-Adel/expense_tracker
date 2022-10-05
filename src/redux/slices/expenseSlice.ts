@@ -85,6 +85,8 @@ const initialState = {
       date: "10/3/2022",
     },
   ],
+
+  totalExpenses: 2340,
 };
 
 const expenseSlice = createSlice({
@@ -93,12 +95,12 @@ const expenseSlice = createSlice({
   reducers: {
     addExpense: (state, action: PayloadAction<Expense>) => {
       state.expensesTransactions.push(action.payload);
+      state.totalExpenses += action.payload.amount;
     },
     removeExpense: (state, action: PayloadAction<number>) => {
-      const fitleredExpenses = state.expensesTransactions.filter(
+      state.expensesTransactions = state.expensesTransactions.filter(
         (expense) => expense.id !== action.payload
       );
-      state.expensesTransactions = fitleredExpenses;
     },
     editExpense: (state, action: PayloadAction<Expense>) => {
       const index = state.expensesTransactions.findIndex(
@@ -114,6 +116,9 @@ export const selectExpenses = (state: RootState) =>
 
 export const selectExpensesCategories = (state: RootState) =>
   state.expenses.expensesCategories;
+
+export const selectTotalExpenses = (state: RootState) =>
+  state.expenses.totalExpenses;
 
 export const expenseActions = expenseSlice.actions;
 export default expenseSlice;
