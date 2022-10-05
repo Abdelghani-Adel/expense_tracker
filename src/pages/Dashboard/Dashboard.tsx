@@ -12,10 +12,12 @@ const Dashboard = () => {
     <div className="row p-2">
       <AddButtons />
       <Totals />
-      <div className="col-6">
+      <hr className="my-3 border border-2 border-dark" />
+      <div className="col-12">
         <IncomesTable />
       </div>
-      <div className="col-6">
+      <hr className="my-3 border border-2 border-dark" />
+      <div className="col-12">
         <ExpensesTable expensesArray={expensesState} />
       </div>
     </div>

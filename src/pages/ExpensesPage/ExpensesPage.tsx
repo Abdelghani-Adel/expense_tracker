@@ -22,7 +22,7 @@ const ExpensesPage = () => {
   const [expenseFilters, setExpenseFilters] = useState<StateFilter>({
     category: categories,
     startDate: "10/2/2022",
-    endDate: "10/3/2022",
+    endDate: "11/3/2022",
   });
 
   const filterHandler = (input: StateFilter) => {

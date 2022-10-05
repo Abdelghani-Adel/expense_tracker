@@ -24,7 +24,7 @@ const Totals = () => {
   return (
     <div className="col-12 mt-2 mb-4">
       <div className="row g-3 justify-content-center">
-        <h2 className="text-center fw-bolder">Total Amounts</h2>
+        <h3 className="text-center fw-bolder">Total Amounts</h3>
         <div className="col-md-3 cursor--pointer" onClick={incomeClick}>
           <div className="border border-2 rounded p-1 text-success">
             <h4 className="text-secondary fw-bold">Income</h4>
