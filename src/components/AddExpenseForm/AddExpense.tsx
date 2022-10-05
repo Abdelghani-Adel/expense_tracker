@@ -5,9 +5,22 @@ import ExpenseAmount from "./ExpenseAmount";
 import ExpenseDescription from "./ExpenseDescription";
 import ExpenseCategory from "./ExpenseCategory";
 
-const AddExpense = () => {
+interface Props {
+  closePortal: () => any;
+}
+
+// interface used as an input type in the onBlurHandler which updates the state object
+interface BlurInput {
+  amount?: number;
+  category?: string;
+  description?: string;
+}
+
+// COMPONENT //
+const AddExpenseForm: React.FC<Props> = (props) => {
   const dispatch = useDispatch();
 
+  // State that holds the new Expense object to be dispatched to the store on submittion
   const [expenseObject, setExpenseObject] = useState<Expense>({
     id: Math.random(),
     amount: 0,
@@ -16,20 +29,14 @@ const AddExpense = () => {
     description: "description",
   });
 
-  type BlurInput = {
-    amount?: number;
-    category?: string;
-    description?: string;
-  };
-
+  // Handlers
   const onBlurHandler = (input: BlurInput) => {
     setExpenseObject((prev) => ({ ...prev, ...input }));
   };
-
   const submitHandler = (e: React.FormEvent) => {
     e.preventDefault();
-
     dispatch(expenseActions.addExpense(expenseObject));
+    props.closePortal();
   };
 
   return (
@@ -45,4 +52,4 @@ const AddExpense = () => {
   );
 };
 
-export default AddExpense;
+export default AddExpenseForm;

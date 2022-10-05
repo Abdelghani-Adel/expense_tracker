@@ -1,12 +1,12 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import DetailsForm from "../../../components/DetailsForm/DetailsForm";
+import DetailsForm from "../../components/DetailsForm/DetailsForm";
 import {
   Income,
   incomeActions,
   selectIncomes,
   selectIncomesCategories,
-} from "../../../redux/slices/incomeSlice";
+} from "../../redux/slices/incomeSlice";
 
 const IncomeDetails: React.FC = () => {
   const dispatch = useDispatch();

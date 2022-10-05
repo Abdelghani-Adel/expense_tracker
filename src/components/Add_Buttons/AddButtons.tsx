@@ -1,7 +1,7 @@
 import AddExpenseBtn from "./AddExpenseBtn";
 import AddIncomeBtn from "./AddIncomeBTn";
 
-const AddTransactions = () => {
+const AddButtons = () => {
   return (
     <div>
       <AddIncomeBtn />
@@ -10,4 +10,4 @@ const AddTransactions = () => {
   );
 };
 
-export default AddTransactions;
+export default AddButtons;

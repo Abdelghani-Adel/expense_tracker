@@ -1,5 +1,5 @@
-import AddIncomeBtn from "../../components/AddTransactions/AddIncomeBTn";
-import IncomesTable from "../Dashboard/IncomesTable";
+import AddIncomeBtn from "../../components/Add_Buttons/AddIncomeBTn";
+import IncomesTable from "./IncomesTable";
 
 const IncomesPage = () => {
   return (

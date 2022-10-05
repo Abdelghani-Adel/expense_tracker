@@ -1,6 +1,6 @@
 import { useState } from "react";
-import AddExpense from "../AddExpense/AddExpense";
-import Portal from "../Portal";
+import AddExpenseForm from "../AddExpenseForm/AddExpense";
+import Portal from "../Portal/Portal";
 
 const AddExpenseBtn = () => {
   const [portalIsShown, setPortalIsShown] = useState(false);
@@ -9,7 +9,10 @@ const AddExpenseBtn = () => {
   return (
     <>
       {portalIsShown && (
-        <Portal component={<AddExpense />} closePortal={closePortal} />
+        <Portal
+          component={<AddExpenseForm closePortal={closePortal} />}
+          closePortal={closePortal}
+        />
       )}
       <button className="btn btn-danger me-2" onClick={showPortal}>
         New Expense

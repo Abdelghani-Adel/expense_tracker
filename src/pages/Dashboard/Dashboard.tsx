@@ -1,12 +1,12 @@
-import AddTransactions from "../../components/AddTransactions/AddTransactions";
-import ExpensesTable from "./ExpenseTable";
-import IncomesTable from "./IncomesTable";
+import AddButtons from "../../components/Add_Buttons/AddButtons";
+import ExpensesTable from "../ExpensesPage/ExpensesTable";
+import IncomesTable from "../IncomesPage/IncomesTable";
 import Totals from "./Totals";
 
 const Dashboard = () => {
   return (
     <div className="row p-2">
-      <AddTransactions />
+      <AddButtons />
       <Totals />
       <div className="col-6">
         <IncomesTable />

@@ -1,14 +1,26 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { Expense, expenseActions } from "../../redux/slices/expenseSlice";
-import IncomeAmount from "./IncomeAmount";
-import IncomeDescription from "./IncomeDescription";
-import IncomeCategory from "./IncomeCategory";
 import { Income, incomeActions } from "../../redux/slices/incomeSlice";
+import IncomeAmount from "./IncomeAmount";
+import IncomeCategory from "./IncomeCategory";
+import IncomeDescription from "./IncomeDescription";
 
-const AddIncome = () => {
+interface Props {
+  closePortal: () => any;
+}
+
+// interface used as an input type in the onBlurHandler which updates the state object
+interface BlurInput {
+  amount?: number;
+  category?: string;
+  description?: string;
+}
+
+// COMPONENT //
+const AddIncomeForm: React.FC<Props> = (props) => {
   const dispatch = useDispatch();
 
+  // State that holds the new Income object to be dispatched to the store on submittion
   const [incomeObject, setIncomeObject] = useState<Income>({
     id: Math.random(),
     amount: 0,
@@ -17,20 +29,14 @@ const AddIncome = () => {
     description: "description",
   });
 
-  type BlurInput = {
-    amount?: number;
-    category?: string;
-    description?: string;
-  };
-
+  // Handlers
   const onBlurHandler = (input: BlurInput) => {
     setIncomeObject((prev) => ({ ...prev, ...input }));
   };
-
   const submitHandler = (e: React.FormEvent) => {
     e.preventDefault();
-
     dispatch(incomeActions.addIncome(incomeObject));
+    props.closePortal();
   };
 
   return (
@@ -46,4 +52,4 @@ const AddIncome = () => {
   );
 };
 
-export default AddIncome;
+export default AddIncomeForm;

@@ -1,6 +1,6 @@
 import { useState } from "react";
-import AddIncome from "../AddIncome/AddIncome";
-import Portal from "../Portal";
+import AddIncomeForm from "../AddIncomeForm/AddIncome";
+import Portal from "../Portal/Portal";
 
 const AddIncomeBtn = () => {
   const [portalIsShown, setPortalIsShown] = useState(false);
@@ -9,7 +9,10 @@ const AddIncomeBtn = () => {
   return (
     <>
       {portalIsShown && (
-        <Portal component={<AddIncome />} closePortal={closePortal} />
+        <Portal
+          component={<AddIncomeForm closePortal={closePortal} />}
+          closePortal={closePortal}
+        />
       )}
       <button className="btn btn-success me-2" onClick={showPortal}>
         New Income
