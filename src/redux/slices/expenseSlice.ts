@@ -38,7 +38,7 @@ const initialState = {
     {
       id: 1,
       amount: 400,
-      category: "Gas",
+      category: "Car",
       description: "Filling my car",
       date: "10/2/2022",
     },
@@ -52,36 +52,40 @@ const initialState = {
     {
       id: 3,
       amount: 150,
-      category: "Doctor",
-      description: "Dentist Doctor",
+      category: "Shopping",
+      description: "Amazon",
+      date: "10/3/2022",
+    },
+    {
+      id: 4,
+      amount: 320,
+      category: "Market",
+      description: "Buying Vegetables from the Market",
+      date: "10/3/2022",
+    },
+    {
+      id: 5,
+      amount: 930,
+      category: "Car",
+      description: "Change tires",
+      date: "10/3/2022",
+    },
+    {
+      id: 6,
+      amount: 210,
+      category: "Market",
+      description: "Milk and cheese",
+      date: "10/3/2022",
+    },
+    {
+      id: 7,
+      amount: 80,
+      category: "Shopping",
+      description: "Amazon",
       date: "10/3/2022",
     },
   ],
 };
-
-// const initialState: Expense[] = [
-//   {
-//     id: 1,
-//     amount: 400,
-//     category: "Gas",
-//     description: "Filling my car",
-//     date: "10/2/2022",
-//   },
-//   {
-//     id: 2,
-//     amount: 250,
-//     category: "Market",
-//     description: "Buying fruites from the market",
-//     date: "10/3/2022",
-//   },
-//   {
-//     id: 3,
-//     amount: 150,
-//     category: "Doctor",
-//     description: "Dentist Doctor",
-//     date: "10/3/2022",
-//   },
-// ];
 
 const expenseSlice = createSlice({
   name: "expenses",

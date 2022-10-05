@@ -1,9 +1,11 @@
-import { useSelector } from "react-redux";
-import { selectExpenses } from "../../redux/slices/expenseSlice";
 import Table from "../../components/Table/Table";
+import { Expense } from "../../redux/slices/expenseSlice";
 
-const ExpensesTable = () => {
-  const expensesState = useSelector(selectExpenses);
+interface Props {
+  expensesArray: Expense[];
+}
+
+const ExpensesTable: React.FC<Props> = (props) => {
   const columns = [
     {
       id: 1,
@@ -26,7 +28,7 @@ const ExpensesTable = () => {
     <div>
       <h3 className="text-center fw-bold mb-3">Expenses Transactions</h3>
       <Table
-        dataArray={expensesState}
+        dataArray={props.expensesArray}
         columns={columns}
         dataTitle="Income Transactions"
         basePath="expenses"
