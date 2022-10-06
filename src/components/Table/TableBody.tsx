@@ -1,13 +1,7 @@
-import { TableColumn, TableObject } from "./tableModels";
+import { TableBodyprops } from "./tableModels";
 import TableRow from "./TableRow";
 
-interface Props {
-  dataArray: TableObject[];
-  columns: TableColumn[];
-  basePath: string;
-}
-
-const TableBody: React.FC<Props> = (props) => {
+const TableBody: React.FC<TableBodyprops> = (props) => {
   return (
     <tbody>
       {props.dataArray.map((object, index) => (
@@ -15,7 +9,6 @@ const TableBody: React.FC<Props> = (props) => {
           key={object.id}
           object={object}
           index={index}
-          columns={props.columns}
           basePath={props.basePath}
         />
       ))}

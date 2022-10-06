@@ -1,15 +1,7 @@
 import { useNavigate } from "react-router-dom";
-import { TableColumn, TableObject } from "./tableModels";
+import { TableRowProps } from "./tableModels";
 
-interface Props {
-  key: number;
-  object: TableObject;
-  index: number;
-  columns: TableColumn[];
-  basePath: string;
-}
-
-const TableRow: React.FC<Props> = (props) => {
+const TableRow: React.FC<TableRowProps> = (props) => {
   let navigate = useNavigate();
 
   const clickHandler = () => {
