@@ -1,21 +1,14 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { selectIncomesCategories } from "../../redux/slices/incomeSlice";
+import AddIncomeInputProps from "./AddIncomeformModels";
 
-type BlurInput = {
-  amount?: number;
-  category?: string;
-  description?: string;
-};
-interface Props {
-  onBlur: (input: BlurInput) => any;
-}
-
-const IncomeCategory: React.FC<Props> = (props) => {
-  const onChangeHandler = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    props.onBlur({ category: e.currentTarget.value });
-  };
+const IncomeCategory: React.FC<AddIncomeInputProps> = (props) => {
   const categories = useSelector(selectIncomesCategories);
+  const onChangeHandler = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    props.updateNewIncomeState({ category: e.currentTarget.value });
+  };
+
   return (
     <select
       className="form-select w-75 m-auto mb-3"

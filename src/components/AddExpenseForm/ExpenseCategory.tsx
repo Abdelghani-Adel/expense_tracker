@@ -1,21 +1,14 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { selectExpensesCategories } from "../../redux/slices/expenseSlice";
+import AddExpenseInputProps from "./AddExpenseformModels";
 
-type BlurInput = {
-  amount?: number;
-  category?: string;
-  description?: string;
-};
-interface Props {
-  onBlur: (input: BlurInput) => any;
-}
-
-const ExpenseCategory: React.FC<Props> = (props) => {
+const ExpenseCategory: React.FC<AddExpenseInputProps> = (props) => {
   const categories = useSelector(selectExpensesCategories);
   const onChangeHandler = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    props.onBlur({ category: e.currentTarget.value });
+    props.updateNewExpenseState({ category: e.currentTarget.value });
   };
+
   return (
     <select
       className="form-select w-75 m-auto mb-3"

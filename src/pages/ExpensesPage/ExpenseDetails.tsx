@@ -12,17 +12,21 @@ const ExpenseDetails: React.FC = () => {
   const dispatch = useDispatch();
   const params = useParams();
 
-  // Selecting the expense object from the state
+  /** Selecting the expense object based on the url parameter which is an ID for the right object */
+  /** findIndex() used instead of find() ? using find() directly may return undefined and that is not the right type  */
   const expensesState = useSelector(selectExpenses);
   const expenseIndex = expensesState.findIndex(
     (expense) => expense.id == Number(params.id)
   );
   const expense = expensesState[expenseIndex];
 
-  // Selecting the categories
+  /** Selecting categories which will be used in DetailsForm component to render the <Select> when activating form editing */
   const categories = useSelector(selectExpensesCategories);
 
+  /** dispatch function which will be executed in DetailsForm with the needed data from that form */
+  /** I just declared it here to use the right acions which is for example editExpense() */
   const dispatchFun = (input: Expense) => {
+    /** The input will constructed in DetailsForm component and this function will be executed there */
     dispatch(expenseActions.editExpense(input));
   };
 

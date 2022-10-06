@@ -1,41 +1,32 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { Expense, expenseActions } from "../../redux/slices/expenseSlice";
+import { expenseActions } from "../../redux/slices/expenseSlice";
+import { UpdateInput } from "./AddExpenseformModels";
 import ExpenseAmount from "./ExpenseAmount";
-import ExpenseDescription from "./ExpenseDescription";
 import ExpenseCategory from "./ExpenseCategory";
+import ExpenseDescription from "./ExpenseDescription";
 
-interface Props {
-  closePortal: () => any;
-}
-
-// interface used as an input type in the onBlurHandler which updates the state object
-interface BlurInput {
-  amount?: number;
-  category?: string;
-  description?: string;
-}
-
-// COMPONENT //
-const AddExpenseForm: React.FC<Props> = (props) => {
+const AddExpenseForm: React.FC<{ closePortal: () => void }> = (props) => {
   const dispatch = useDispatch();
 
-  // State that holds the new Expense object to be dispatched to the store on submittion
-  const [expenseObject, setExpenseObject] = useState<Expense>({
+  /** Holding the new income object to be dispatched to the store on form submission */
+  const [newExpense, setNewExpense] = useState({
     id: Math.random(),
     amount: 0,
-    category: "category",
+    category: "",
     date: new Date().toLocaleDateString(),
-    description: "description",
+    description: "",
   });
 
-  // Handlers
-  const onBlurHandler = (input: BlurInput) => {
-    setExpenseObject((prev) => ({ ...prev, ...input }));
+  /** Update function to be passed to child components for updating the new income object that stored in the state */
+  const updateNewExpenseState = (input: UpdateInput) => {
+    setNewExpense((prev) => ({ ...prev, ...input }));
   };
+
+  /** Form Submission */
   const submitHandler = (e: React.FormEvent) => {
     e.preventDefault();
-    dispatch(expenseActions.addExpense(expenseObject));
+    dispatch(expenseActions.addExpense(newExpense));
     props.closePortal();
   };
 
@@ -43,9 +34,9 @@ const AddExpenseForm: React.FC<Props> = (props) => {
     <div className="modal-overlay w-25 bg-white p-2 rounded">
       <form action="" className=" g-2" onSubmit={submitHandler}>
         <h4 className="text-secondary text-center my-3">Adding New Expense</h4>
-        <ExpenseAmount onBlur={onBlurHandler} />
-        <ExpenseCategory onBlur={onBlurHandler} />
-        <ExpenseDescription onBlur={onBlurHandler} />
+        <ExpenseAmount updateNewExpenseState={updateNewExpenseState} />
+        <ExpenseCategory updateNewExpenseState={updateNewExpenseState} />
+        <ExpenseDescription updateNewExpenseState={updateNewExpenseState} />
         <button className="btn btn-danger d-block m-auto w-25">Add</button>
       </form>
     </div>

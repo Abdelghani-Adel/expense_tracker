@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { Income, incomeActions } from "../../redux/slices/incomeSlice";
+import { incomeActions } from "../../redux/slices/incomeSlice";
+import { UpdateInput } from "./AddIncomeformModels";
 import IncomeAmount from "./IncomeAmount";
 import IncomeCategory from "./IncomeCategory";
 import IncomeDescription from "./IncomeDescription";
@@ -18,11 +19,6 @@ const AddIncomeForm: React.FC<{ closePortal: () => void }> = (props) => {
   });
 
   /** Update function to be passed to child components for updating the new income object that stored in the state */
-  interface UpdateInput {
-    amount?: number;
-    category?: string;
-    description?: string;
-  }
   const updateNewIncomeState = (input: UpdateInput) => {
     setNewIncome((prev) => ({ ...prev, ...input }));
   };
@@ -39,8 +35,8 @@ const AddIncomeForm: React.FC<{ closePortal: () => void }> = (props) => {
       <form action="" className=" g-2" onSubmit={submitHandler}>
         <h4 className="text-secondary text-center my-3">Adding New Income</h4>
         <IncomeAmount updateNewIncomeState={updateNewIncomeState} />
-        <IncomeCategory onBlur={updateNewIncomeState} />
-        <IncomeDescription onBlur={updateNewIncomeState} />
+        <IncomeCategory updateNewIncomeState={updateNewIncomeState} />
+        <IncomeDescription updateNewIncomeState={updateNewIncomeState} />
         <button className="btn btn-danger d-block m-auto w-25">Add</button>
       </form>
     </div>

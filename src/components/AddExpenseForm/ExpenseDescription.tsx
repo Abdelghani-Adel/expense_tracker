@@ -1,18 +1,11 @@
 import React from "react";
+import AddExpenseInputProps from "./AddExpenseformModels";
 
-type BlurInput = {
-  amount?: number;
-  category?: string;
-  description?: string;
-};
-interface Props {
-  onBlur: (input: BlurInput) => any;
-}
-
-const ExpenseDescription: React.FC<Props> = (props) => {
+const ExpenseDescription: React.FC<AddExpenseInputProps> = (props) => {
   const onBlurHandler = (e: React.FocusEvent<HTMLInputElement>) => {
-    props.onBlur({ description: e.currentTarget.value });
+    props.updateNewExpenseState({ description: e.currentTarget.value });
   };
+
   return (
     <input
       type="text"

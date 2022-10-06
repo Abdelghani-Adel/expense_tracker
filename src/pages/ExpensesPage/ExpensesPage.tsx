@@ -5,41 +5,37 @@ import {
   selectExpenses,
   selectExpensesCategories,
 } from "../../redux/slices/expenseSlice";
-import ExpensesFilters from "./ExpensesFilter";
+import ExpensesCategoryFilter from "./ExpensesCategoryFilter";
 import ExpensesTable from "./ExpensesTable";
 
-interface StateFilter {
-  category: string[];
-  startDate: string;
-  endDate: string;
-}
-
 const ExpensesPage = () => {
-  const categoriesState = useSelector(selectExpensesCategories);
+  /** Constructing an array of strings that holds the categories I want to show */
   let categories: string[] = [];
+  /** Mapping through categories objects to pull out only the title and push it to the array of strings */
+  const categoriesState = useSelector(selectExpensesCategories);
   categoriesState.map((category) => categories.push(category.title));
 
-  const [expenseFilters, setExpenseFilters] = useState<StateFilter>({
-    category: categories,
-    startDate: "10/2/2022",
-    endDate: "11/3/2022",
-  });
+  /** A state holds array to be used in the filteration process */
+  /** Initially it is all categories that we pulled out and store them in a const categories */
+  const [categoriesArray, setCategoriesArray] = useState(categories);
 
-  const filterHandler = (input: StateFilter) => {
-    setExpenseFilters((prev) => ({ ...prev, ...input }));
+  /** Updater function to update the state array which we used in the filteration */
+  const filterCategories = (input: string | string[]) => {
+    /** In case the user changes the filter from all category to show only one category */
+    if (typeof input === "string") {
+      setCategoriesArray([input]);
+    } else if (Array.isArray(input)) {
+      /** In case the user choose all categories, the input in this case is string[] so I update the state with it directoy */
+      setCategoriesArray(input);
+    }
   };
 
-  // filter the expenses
+  /** Filteration Process */
   const expensesState = useSelector(selectExpenses);
   let filteredExpenses = expensesState;
   filteredExpenses = filteredExpenses.filter((expense) => {
-    if (expenseFilters.category.includes(expense.category)) {
-      if (
-        expense.date >= expenseFilters.startDate &&
-        expense.date <= expenseFilters.endDate
-      ) {
-        return expense;
-      }
+    if (categoriesArray.includes(expense.category)) {
+      return expense;
     }
   });
 
@@ -48,9 +44,8 @@ const ExpensesPage = () => {
       <div className="d-flex align-items-start justify-content-between">
         <AddExpenseBtn />
 
-        <ExpensesFilters
-          filters={expenseFilters}
-          filterHandler={filterHandler}
+        <ExpensesCategoryFilter
+          updateCategoriesFilter={filterCategories}
           allCategories={categories}
         />
       </div>

@@ -1,11 +1,9 @@
-interface UpdateInput {
+export interface UpdateInput {
   amount?: number;
   category?: string;
   description?: string;
 }
 
-export interface InputProps {
+export default interface AddIncomeInputProps {
   updateNewIncomeState: (input: UpdateInput) => any;
 }
-
-export {};

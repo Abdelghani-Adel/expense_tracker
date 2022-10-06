@@ -6,6 +6,7 @@ import IncomesTable from "../IncomesPage/IncomesTable";
 import Totals from "./Totals";
 
 const Dashboard = () => {
+  /** will be passed to <ExpensesTable /> */
   const expensesState = useSelector(selectExpenses);
 
   return (
