@@ -1,7 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "../store";
 
-// Exported ? to be used as a type wherever I expect an income object
 export interface Expense {
   id: number;
   amount: number;

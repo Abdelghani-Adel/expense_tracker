@@ -5,37 +5,32 @@ import IncomeAmount from "./IncomeAmount";
 import IncomeCategory from "./IncomeCategory";
 import IncomeDescription from "./IncomeDescription";
 
-interface Props {
-  closePortal: () => any;
-}
-
-// interface used as an input type in the onBlurHandler which updates the state object
-interface BlurInput {
-  amount?: number;
-  category?: string;
-  description?: string;
-}
-
-// COMPONENT //
-const AddIncomeForm: React.FC<Props> = (props) => {
+const AddIncomeForm: React.FC<{ closePortal: () => void }> = (props) => {
   const dispatch = useDispatch();
 
-  // State that holds the new Income object to be dispatched to the store on submittion
-  const [incomeObject, setIncomeObject] = useState<Income>({
+  /** Holding the new income object to be dispatched to the store on form submission */
+  const [newIncome, setNewIncome] = useState({
     id: Math.random(),
     amount: 0,
-    category: "category",
+    category: "",
     date: new Date().toLocaleDateString(),
-    description: "description",
+    description: "",
   });
 
-  // Handlers
-  const onBlurHandler = (input: BlurInput) => {
-    setIncomeObject((prev) => ({ ...prev, ...input }));
+  /** Update function to be passed to child components for updating the new income object that stored in the state */
+  interface UpdateInput {
+    amount?: number;
+    category?: string;
+    description?: string;
+  }
+  const updateNewIncomeState = (input: UpdateInput) => {
+    setNewIncome((prev) => ({ ...prev, ...input }));
   };
+
+  /** Form Submission */
   const submitHandler = (e: React.FormEvent) => {
     e.preventDefault();
-    dispatch(incomeActions.addIncome(incomeObject));
+    dispatch(incomeActions.addIncome(newIncome));
     props.closePortal();
   };
 
@@ -43,9 +38,9 @@ const AddIncomeForm: React.FC<Props> = (props) => {
     <div className="modal-overlay w-25 bg-white p-2 rounded">
       <form action="" className=" g-2" onSubmit={submitHandler}>
         <h4 className="text-secondary text-center my-3">Adding New Income</h4>
-        <IncomeAmount onBlur={onBlurHandler} />
-        <IncomeCategory onBlur={onBlurHandler} />
-        <IncomeDescription onBlur={onBlurHandler} />
+        <IncomeAmount updateNewIncomeState={updateNewIncomeState} />
+        <IncomeCategory onBlur={updateNewIncomeState} />
+        <IncomeDescription onBlur={updateNewIncomeState} />
         <button className="btn btn-danger d-block m-auto w-25">Add</button>
       </form>
     </div>
