@@ -85,7 +85,7 @@ const initialState = {
     },
   ],
 
-  totalExpenses: 2340,
+  totalExpenses: 0,
 };
 
 const expenseSlice = createSlice({
@@ -116,8 +116,13 @@ export const selectExpenses = (state: RootState) =>
 export const selectExpensesCategories = (state: RootState) =>
   state.expenses.expensesCategories;
 
-export const selectTotalExpenses = (state: RootState) =>
-  state.expenses.totalExpenses;
+export const selectTotalExpenses = (state: RootState) => {
+  let totalExpenses = 0;
+  state.expenses.expensesTransactions.map(
+    (expense) => (totalExpenses += Number(expense.amount))
+  );
+  return totalExpenses;
+};
 
 export const expenseActions = expenseSlice.actions;
 export default expenseSlice;

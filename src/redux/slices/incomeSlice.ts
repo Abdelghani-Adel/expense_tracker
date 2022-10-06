@@ -77,7 +77,13 @@ export const selectIncomes = (state: RootState) =>
 export const selectIncomesCategories = (state: RootState) =>
   state.incomes.incomesCategoreis;
 
-export const selectTotalIncomes = (state: RootState) =>
-  state.incomes.totalIncomes;
+export const selectTotalIncomes = (state: RootState) => {
+  let totalIncomes = 0;
+  state.incomes.incomesTransactions.map(
+    (income) => (totalIncomes += Number(income.amount))
+  );
+
+  return totalIncomes;
+};
 
 export default incomeSlice;

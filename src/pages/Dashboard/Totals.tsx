@@ -11,8 +11,7 @@ const Totals = () => {
   let navigate = useNavigate();
   const dispatch = useDispatch();
 
-  /** There are bugs here, will come to them later */
-
+  /** The bug has been fixed */
   let totalExpenses = useSelector(selectTotalExpenses);
   let totalIncomes = useSelector(selectTotalIncomes);
   let balance = totalIncomes - totalExpenses;
