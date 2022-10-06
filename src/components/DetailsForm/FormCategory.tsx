@@ -1,13 +1,8 @@
-interface Props {
-  category?: string;
-  onBlur: (input: any) => any;
-  categories: { id: number; title: string; subCategories?: any }[];
-  readonly: boolean;
-}
+import { FormCategoryProps } from "./DetailsFormInterfaces";
 
-const FormCategory: React.FC<Props> = (props) => {
+const FormCategory: React.FC<FormCategoryProps> = (props) => {
   const onChangeHandler = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    props.onBlur({ category: e.target.value });
+    props.updateObject({ category: e.target.value });
   };
   return (
     <div className="col-2 me-3">

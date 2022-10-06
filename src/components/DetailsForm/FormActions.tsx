@@ -1,6 +1,6 @@
 interface Props {
-  edithandler: () => any;
-  editable: boolean;
+  activateFormEditing: () => void;
+  formIsEditable: boolean;
 }
 
 const FormActions: React.FC<Props> = (props) => {
@@ -9,15 +9,15 @@ const FormActions: React.FC<Props> = (props) => {
       <button
         type="button"
         className="btn btn-warning w-100"
-        hidden={props.editable}
-        onClick={props.edithandler}
+        hidden={props.formIsEditable}
+        onClick={props.activateFormEditing}
       >
         Edit <i className="bi bi-pencil-square"></i>
       </button>
       <button
         type="submit"
         className="btn btn-primary w-100"
-        hidden={!props.editable}
+        hidden={!props.formIsEditable}
       >
         Save <i className="bi bi-send"></i>
       </button>

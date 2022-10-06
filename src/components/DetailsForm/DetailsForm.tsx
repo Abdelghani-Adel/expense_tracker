@@ -1,44 +1,40 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { DataObject, DetailsFormProps } from "./DetailsFormInterfaces";
 import FormActions from "./FormActions";
 import FormAmount from "./FormAmount";
 import FormCategory from "./FormCategory";
 import FormDate from "./FormDate";
 import FormDescription from "./FormDescription";
 
-interface DataObject {
-  id: number;
-  amount: number;
-  date: string;
-  category: string;
-  description: string;
-}
-
-interface Props {
-  dataObject: DataObject;
-  categories: { id: number; title: string; subCategories?: any }[];
-  dispatchFun: (input: DataObject) => any;
-}
-
-const DetailsForm: React.FC<Props> = (props) => {
+const DetailsForm: React.FC<DetailsFormProps> = (props) => {
   const navigate = useNavigate();
-  const [canEdit, setCanEdit] = useState<boolean>(false);
+  const [formIsEditable, setFormIsEditable] = useState(false);
+  const activateFormEditing = () => setFormIsEditable(true);
 
-  const [newDataObject, setNewDataObject] = useState<DataObject>({
+  /** Holding the new DataObject which will be dispatched on submit */
+  /** The initial state of the object is the object it self */
+  /** I can use the state update Fun to update data that need to be changed in the current object */
+  const [newDataObject, setNewDataObject] = useState({
     ...props.dataObject,
   });
 
-  const activateEdit = () => setCanEdit(true);
-
-  const onBlurHandler = (input: DataObject) => {
+  /** updater function will be passed to child input components */
+  /** the child component will use this function onBlur to send the data to the state */
+  const updateObject = (input: DataObject) => {
     setNewDataObject((prev) => ({ ...prev, ...input }));
   };
 
+  /** Form Submission Handler */
   const submitHandler = (e: React.FormEvent) => {
     e.preventDefault();
 
+    // The dispatch function comes from the parent because this is a resuable component
+    // and the dispatch function has a specific details for storing the data correctly in the state
+    // so I will create the dispatch function as needed in the parent, and just use it here with the data itself
     props.dispatchFun(newDataObject);
 
+    // Navigating back when finish submission
     navigate(-1);
   };
 
@@ -46,26 +42,25 @@ const DetailsForm: React.FC<Props> = (props) => {
     <form className="d-flex align-items-end" onSubmit={submitHandler}>
       <FormAmount
         amount={props.dataObject.amount}
-        onBlur={onBlurHandler}
-        readonly={!canEdit}
+        updateObject={updateObject}
+        readonly={!formIsEditable}
       />
       <FormCategory
         category={props.dataObject.category}
         categories={props.categories}
-        onBlur={onBlurHandler}
-        readonly={!canEdit}
+        updateObject={updateObject}
+        readonly={!formIsEditable}
       />
       <FormDescription
         description={props.dataObject.description}
-        onBlur={onBlurHandler}
-        readonly={!canEdit}
+        updateObject={updateObject}
+        readonly={!formIsEditable}
       />
-      <FormDate
-        date={props.dataObject.date}
-        onBlur={onBlurHandler}
-        readonly={!canEdit}
+      <FormDate date={props.dataObject.date} readonly={!formIsEditable} />
+      <FormActions
+        formIsEditable={formIsEditable}
+        activateFormEditing={activateFormEditing}
       />
-      <FormActions editable={canEdit} edithandler={activateEdit} />
     </form>
   );
 };
