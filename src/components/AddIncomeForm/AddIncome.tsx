@@ -7,6 +7,9 @@ import IncomeCategory from "./IncomeCategory";
 import IncomeDescription from "./IncomeDescription";
 import { Store } from "react-notifications-component";
 
+import axios from "axios";
+import { title } from "process";
+
 const AddIncomeForm: React.FC<{ closePortal: () => void }> = (props) => {
   const dispatch = useDispatch();
 
@@ -31,8 +34,8 @@ const AddIncomeForm: React.FC<{ closePortal: () => void }> = (props) => {
     props.closePortal();
 
     Store.addNotification({
-      title: "New Income Added!",
-      message: "The income has been added successfully",
+      title: "Income added successfully !",
+      message: "Thank you",
       type: "success",
       insert: "bottom",
       container: "bottom-left",
@@ -43,6 +46,17 @@ const AddIncomeForm: React.FC<{ closePortal: () => void }> = (props) => {
         pauseOnHover: true,
       },
     });
+
+    const sendIncome = async () => {
+      const sendRequest = await axios({
+        method: "post",
+        url: "https://expense-tracker-3996f-default-rtdb.firebaseio.com/incomes.json",
+        data: newIncome,
+      });
+      console.log(sendRequest);
+    };
+
+    sendIncome();
   };
 
   return (

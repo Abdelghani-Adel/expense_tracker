@@ -10,6 +10,9 @@ import IncomesPage from "./pages/IncomesPage/IncomesPage";
 import { incomeActions, selectIncomes } from "./redux/slices/incomeSlice";
 
 import { ReactNotifications } from "react-notifications-component";
+import useFetch from "./hooks/useFetch";
+
+import axios from "axios";
 
 function App() {
   const incomesState = useSelector(selectIncomes);
@@ -17,32 +20,24 @@ function App() {
 
   // Fetching data from Firebase backend
   useEffect(() => {
-    const asyncFun = async () => {
-      const fetchData = async () => {
-        const response = await fetch(
-          "https://expense-tracker-3996f-default-rtdb.firebaseio.com/incomes.json"
-        );
+    const getData = async () => {
+      axios({
+        url: "https://expense-tracker-3996f-default-rtdb.firebaseio.com/incomes.json",
+        method: "put",
+        data: incomesState,
+      });
+      const response = await axios.get(
+        `https://expense-tracker-3996f-default-rtdb.firebaseio.com/incomes.json`
+      );
 
-        if (!response.ok) {
-          throw new Error("fetching data failed!");
-        }
+      const newTransactions = Object.entries(response.data);
 
-        const data = await response.json();
-
-        return data;
-      };
-
-      try {
-        const incomeData = await fetchData();
-        dispatch(incomeActions.replaceIncomes(incomeData));
-      } catch (error) {
-        console.log(error);
-      }
+      dispatch(incomeActions.replaceIncomes(newTransactions));
     };
-
-    asyncFun();
+    getData();
   }, []);
 
+  // let isInitial = true;
   // useEffect(() => {
   //   if (isInitial) {
   //     isInitial = false;
