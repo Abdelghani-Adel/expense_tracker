@@ -5,6 +5,7 @@ import { UpdateInput } from "./AddIncomeformModels";
 import IncomeAmount from "./IncomeAmount";
 import IncomeCategory from "./IncomeCategory";
 import IncomeDescription from "./IncomeDescription";
+import { Store } from "react-notifications-component";
 
 const AddIncomeForm: React.FC<{ closePortal: () => void }> = (props) => {
   const dispatch = useDispatch();
@@ -28,6 +29,20 @@ const AddIncomeForm: React.FC<{ closePortal: () => void }> = (props) => {
     e.preventDefault();
     dispatch(incomeActions.addIncome(newIncome));
     props.closePortal();
+
+    Store.addNotification({
+      title: "New Income Added!",
+      message: "The income has been added successfully",
+      type: "success",
+      insert: "bottom",
+      container: "bottom-left",
+      animationIn: ["animate__animated", "animate__fadeIn"],
+      animationOut: ["animate__animated", "animate__fadeOut"],
+      dismiss: {
+        duration: 2000,
+        pauseOnHover: true,
+      },
+    });
   };
 
   return (

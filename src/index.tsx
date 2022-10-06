@@ -5,6 +5,8 @@ import reduxStore from "./redux/store";
 import { BrowserRouter } from "react-router-dom";
 import "./style.css";
 
+import "react-notifications-component/dist/theme.css";
+
 import App from "./App";
 
 const root = ReactDOM.createRoot(

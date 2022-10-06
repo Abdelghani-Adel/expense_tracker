@@ -9,7 +9,7 @@ import IncomeDetails from "./pages/IncomesPage/IncomeDetails";
 import IncomesPage from "./pages/IncomesPage/IncomesPage";
 import { incomeActions, selectIncomes } from "./redux/slices/incomeSlice";
 
-let isInitial = true;
+import { ReactNotifications } from "react-notifications-component";
 
 function App() {
   const incomesState = useSelector(selectIncomes);
@@ -66,6 +66,7 @@ function App() {
 
   return (
     <div className="App">
+      <ReactNotifications />
       <NavBar />
       <div className="container">
         <Routes>
