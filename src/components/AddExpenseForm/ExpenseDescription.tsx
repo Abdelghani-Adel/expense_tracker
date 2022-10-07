@@ -11,7 +11,8 @@ const ExpenseDescription: React.FC<AddExpenseInputProps> = (props) => {
       type="text"
       className="form-control w-75 m-auto mb-3"
       placeholder="Enter Description"
-      onBlur={onBlurHandler}
+      // onBlur={onBlurHandler}
+      onBlurCapture={onBlurHandler}
     />
   );
 };

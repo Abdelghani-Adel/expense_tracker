@@ -11,7 +11,8 @@ const IncomeDescription: React.FC<AddIncomeInputProps> = (props) => {
       type="text"
       className="form-control w-75 m-auto mb-3"
       placeholder="Enter Description"
-      onBlur={onBlurHandler}
+      // onBlur={onBlurHandler}
+      onBlurCapture={onBlurHandler}
     />
   );
 };

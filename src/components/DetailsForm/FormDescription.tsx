@@ -18,7 +18,8 @@ const FormDescription: React.FC<FormDescriptionPros> = (props) => {
         className="form-control"
         defaultValue={props.description}
         readOnly={props.readonly}
-        onBlur={onBlurHandler}
+        // onBlur={onBlurHandler}
+        onBlurCapture={onBlurHandler}
       />
     </div>
   );

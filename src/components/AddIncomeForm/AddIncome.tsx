@@ -49,7 +49,7 @@ const AddIncomeForm: React.FC<{ closePortal: () => void }> = (props) => {
 
     const sendIncome = async () => {
       const sendRequest = await axios({
-        method: "post",
+        method: "patch",
         url: "https://expense-tracker-3996f-default-rtdb.firebaseio.com/incomes.json",
         data: newIncome,
       });

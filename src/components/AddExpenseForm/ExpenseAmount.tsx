@@ -11,7 +11,8 @@ const ExpenseAmount: React.FC<AddExpenseInputProps> = (props) => {
       type="number"
       className="form-control w-75 m-auto mb-3"
       placeholder="Enter Amount"
-      onBlur={onBlurHandler}
+      // onBlur={onBlurHandler}
+      onBlurCapture={onBlurHandler}
     />
   );
 };

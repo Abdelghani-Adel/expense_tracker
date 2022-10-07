@@ -13,7 +13,8 @@ const FormAmount: React.FC<FormAmountProps> = (props) => {
         className="form-control"
         defaultValue={props.amount}
         readOnly={props.readonly}
-        onBlur={onBlurHandler}
+        // onBlur={onBlurHandler}
+        onBlurCapture={onBlurHandler}
       />
     </div>
   );
