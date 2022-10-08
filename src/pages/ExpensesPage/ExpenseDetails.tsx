@@ -2,11 +2,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import DetailsForm from "../../components/DetailsForm/DetailsForm";
 import {
-  Expense,
   expenseActions,
   selectExpenses,
   selectExpensesCategories,
 } from "../../redux/slices/expenseSlice";
+import { TransactionObject } from "../../interfaces/Transaction";
 
 const ExpenseDetails: React.FC = () => {
   const dispatch = useDispatch();
@@ -25,19 +25,24 @@ const ExpenseDetails: React.FC = () => {
 
   /** dispatch function which will be executed in DetailsForm with the needed data from that form */
   /** I just declared it here to use the right acions which is for example editExpense() */
-  const dispatchFun = (input: Expense) => {
+  const dispatchFun = (input: TransactionObject) => {
     /** The input will constructed in DetailsForm component and this function will be executed there */
     dispatch(expenseActions.editExpense(input));
+  };
+
+  const deleteFun = () => {
+    dispatch(expenseActions.removeExpense(Number(params.id)));
   };
 
   return (
     <div className="row p-5">
       <h2 className="text-center">Expense Details</h2>
-      {/* <DetailsForm
+      <DetailsForm
         categories={categories}
         dataObject={expense}
         dispatchFun={dispatchFun}
-      /> */}
+        deleteFun={deleteFun}
+      />
     </div>
   );
 };

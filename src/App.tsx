@@ -10,7 +10,6 @@ import IncomesPage from "./pages/IncomesPage/IncomesPage";
 import { incomeActions, selectIncomes } from "./redux/slices/incomeSlice";
 
 import { ReactNotifications } from "react-notifications-component";
-import useFetch from "./hooks/useFetch";
 
 import axios from "axios";
 
@@ -47,9 +46,9 @@ function App() {
 
       // const newTransactions = Object.entries(response.data);
       dispatch(incomeActions.replaceIncomes(response.data));
-      console.log(response.data);
+      // console.log(response.data);
     };
-    getData();
+    // getData();
   }, []);
 
   return (

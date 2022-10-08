@@ -1,8 +1,8 @@
 import Table from "../../components/Table/Table";
-import { Expense } from "../../redux/slices/expenseSlice";
+import { TransactionObject } from "../../interfaces/Transaction";
 
 interface Props {
-  expensesArray: Expense[];
+  expensesArray: TransactionObject[];
 }
 
 const ExpensesTable: React.FC<Props> = (props) => {

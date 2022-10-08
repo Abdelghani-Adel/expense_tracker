@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
-import AddExpenseBtn from "../../components/Add_Buttons/AddExpenseBtn";
+import AddTransactionBtn from "../../components/AddTransactionForm/AddTransactionBtn";
 import {
   selectExpenses,
   selectExpensesCategories,
@@ -13,11 +13,10 @@ const ExpensesPage = () => {
   let categories: string[] = [];
   /** Mapping through categories objects to pull out only the title and push it to the array of strings */
   const categoriesState = useSelector(selectExpensesCategories);
-  categoriesState.map((category) => categories.push(category.title));
 
   /** A state holds array to be used in the filteration process */
   /** Initially it is all categories that we pulled out and store them in a const categories */
-  const [categoriesArray, setCategoriesArray] = useState(categories);
+  const [categoriesArray, setCategoriesArray] = useState(categoriesState);
 
   /** Updater function to update the state array which we used in the filteration */
   const filterCategories = (input: string | string[]) => {
@@ -42,11 +41,11 @@ const ExpensesPage = () => {
   return (
     <div className="row p-2">
       <div className="d-flex align-items-start justify-content-between">
-        <AddExpenseBtn />
+        <AddTransactionBtn />
 
         <ExpensesCategoryFilter
           updateCategoriesFilter={filterCategories}
-          allCategories={categories}
+          allCategories={categoriesState}
         />
       </div>
 

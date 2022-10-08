@@ -1,4 +1,4 @@
-import { FormAmountProps } from "./DetailsFormInterfaces";
+import { FormAmountProps } from "../../interfaces/DetailsForm";
 
 const FormAmount: React.FC<FormAmountProps> = (props) => {
   const onBlurHandler = (e: React.FocusEvent<HTMLInputElement>) => {

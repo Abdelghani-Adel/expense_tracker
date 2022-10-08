@@ -1,11 +1,22 @@
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+
 interface Props {
   activateFormEditing: () => void;
   formIsEditable: boolean;
+  deleteFun: () => void;
 }
 
 const FormActions: React.FC<Props> = (props) => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const deleteHandler = () => {
+    props.deleteFun();
+    navigate("/");
+  };
   return (
-    <div className="col-1">
+    <div className="col-2 d-flex">
       <button
         type="button"
         className="btn btn-warning w-100"
@@ -20,6 +31,14 @@ const FormActions: React.FC<Props> = (props) => {
         hidden={!props.formIsEditable}
       >
         Save <i className="bi bi-send"></i>
+      </button>
+
+      <button
+        type="button"
+        className="btn btn-danger ms-1"
+        onClick={deleteHandler}
+      >
+        Delete
       </button>
     </div>
   );

@@ -1,4 +1,4 @@
-import { TableColumn } from "./tableModels";
+import { TableColumn } from "../../interfaces/Table";
 
 const TableHead: React.FC<{ columns: TableColumn[] }> = (props) => {
   return (

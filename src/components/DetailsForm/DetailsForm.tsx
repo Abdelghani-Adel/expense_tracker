@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { DataObject, DetailsFormProps } from "./DetailsFormInterfaces";
+import { DataObject, DetailsFormProps } from "../../interfaces/DetailsForm";
 import FormActions from "./FormActions";
 import FormAmount from "./FormAmount";
 import FormCategory from "./FormCategory";
@@ -60,6 +60,7 @@ const DetailsForm: React.FC<DetailsFormProps> = (props) => {
       <FormActions
         formIsEditable={formIsEditable}
         activateFormEditing={activateFormEditing}
+        deleteFun={props.deleteFun}
       />
     </form>
   );

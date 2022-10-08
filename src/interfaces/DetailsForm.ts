@@ -1,9 +1,3 @@
-interface Category {
-  id: number;
-  title: string;
-  subCategories?: string[];
-}
-
 export interface DataObject {
   id: number;
   amount: number;
@@ -12,7 +6,7 @@ export interface DataObject {
   description: string;
 }
 
-interface InputProps {
+export interface DetailsInputProps {
   updateObject: (input: any) => void;
   readonly: boolean;
 }
@@ -21,19 +15,18 @@ export interface DetailsFormProps {
   dataObject: DataObject;
   categories: string[];
   dispatchFun: (input: DataObject) => any;
+  deleteFun: () => any;
 }
 
-export interface FormAmountProps extends InputProps {
+export interface FormAmountProps extends DetailsInputProps {
   amount: number;
 }
 
-export interface FormCategoryProps extends InputProps {
+export interface FormCategoryProps extends DetailsInputProps {
   category: string;
   categories: string[];
 }
 
-export interface FormDescriptionPros extends InputProps {
+export interface FormDescriptionProps extends DetailsInputProps {
   description: string;
 }
-
-export {};

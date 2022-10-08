@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { TableRowProps } from "./tableModels";
+import { TableRowProps } from "../../interfaces/Table";
 
 const TableRow: React.FC<TableRowProps> = (props) => {
   let navigate = useNavigate();

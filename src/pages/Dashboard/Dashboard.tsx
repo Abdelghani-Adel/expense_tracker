@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import AddButtons from "../../components/Add_Buttons/AddButtons";
+import AddTransactionBtn from "../../components/AddTransactionForm/AddTransactionBtn";
 import { selectExpenses } from "../../redux/slices/expenseSlice";
 import ExpensesTable from "../ExpensesPage/ExpensesTable";
 import IncomesTable from "../IncomesPage/IncomesTable";
@@ -11,7 +11,7 @@ const Dashboard = () => {
 
   return (
     <div className="row p-2">
-      <AddButtons />
+      <AddTransactionBtn />
       <Totals />
       <hr className="my-3 border border-2 border-dark" />
       <div className="col-12">

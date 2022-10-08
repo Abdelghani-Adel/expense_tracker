@@ -1,9 +1,9 @@
 import React from "react";
-import AddIncomeInputProps from "./AddIncomeformModels";
+import { TransactionInputProps } from "../../interfaces/Transaction";
 
-const IncomeDescription: React.FC<AddIncomeInputProps> = (props) => {
+const TransactionDesctiption: React.FC<TransactionInputProps> = (props) => {
   const onBlurHandler = (e: React.FocusEvent<HTMLInputElement>) => {
-    props.updateNewIncomeState({ description: e.currentTarget.value });
+    props.updateNewTransactionState({ description: e.currentTarget.value });
   };
 
   return (
@@ -17,4 +17,4 @@ const IncomeDescription: React.FC<AddIncomeInputProps> = (props) => {
   );
 };
 
-export default IncomeDescription;
+export default TransactionDesctiption;

@@ -1,9 +1,9 @@
 import React from "react";
-import AddExpenseInputProps from "./AddExpenseformModels";
+import { TransactionInputProps } from "../../interfaces/Transaction";
 
-const ExpenseAmount: React.FC<AddExpenseInputProps> = (props) => {
+const TransactionAmount: React.FC<TransactionInputProps> = (props) => {
   const onBlurHandler = (e: React.FocusEvent<HTMLInputElement>) => {
-    props.updateNewExpenseState({ amount: Number(e.currentTarget.value) });
+    props.updateNewTransactionState({ amount: Number(e.currentTarget.value) });
   };
 
   return (
@@ -17,4 +17,4 @@ const ExpenseAmount: React.FC<AddExpenseInputProps> = (props) => {
   );
 };
 
-export default ExpenseAmount;
+export default TransactionAmount;

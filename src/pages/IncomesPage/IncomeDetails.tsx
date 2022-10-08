@@ -2,11 +2,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import DetailsForm from "../../components/DetailsForm/DetailsForm";
 import {
-  Income,
   incomeActions,
   selectIncomes,
   selectIncomesCategories,
 } from "../../redux/slices/incomeSlice";
+import { TransactionObject } from "../../interfaces/Transaction";
 
 const IncomeDetails: React.FC = () => {
   const dispatch = useDispatch();
@@ -15,7 +15,6 @@ const IncomeDetails: React.FC = () => {
   /** Selecting the expense object based on the url parameter which is an ID for the right object */
   /** findIndex() used instead of find() ? using find() directly may return undefined and that is not the right type  */
   const incomesState = useSelector(selectIncomes);
-  console.log(incomesState);
   const incomeIndex = incomesState.findIndex(
     (income) => income.id == Number(params.id)
   );
@@ -26,9 +25,13 @@ const IncomeDetails: React.FC = () => {
 
   /** dispatch function which will be executed in DetailsForm with the needed data from that form */
   /** I just declared it here to use the right acions which is for example editExpense() */
-  const dispatchFun = (input: Income) => {
+  const dispatchFun = (input: TransactionObject) => {
     /** The input will constructed in DetailsForm component and this function will be executed there */
     dispatch(incomeActions.editIncome(input));
+  };
+
+  const deleteFun = () => {
+    dispatch(incomeActions.removeIncome(Number(params.id)));
   };
 
   return (
@@ -38,6 +41,7 @@ const IncomeDetails: React.FC = () => {
         categories={categories}
         dataObject={income}
         dispatchFun={dispatchFun}
+        deleteFun={deleteFun}
       />
     </div>
   );

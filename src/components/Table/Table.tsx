@@ -1,8 +1,10 @@
 import TableBody from "./TableBody";
 import TableHead from "./TableHead";
-import TableProps from "./tableModels";
+import TableProps from "../../interfaces/Table";
 
 const Table: React.FC<TableProps> = (props) => {
+  // console.log(props.dataArray);
+
   return (
     <table className="table table-hover table-bordered border">
       <TableHead columns={props.columns} />

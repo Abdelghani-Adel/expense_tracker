@@ -1,12 +1,6 @@
-import { FormDescriptionPros } from "./DetailsFormInterfaces";
+import { FormDescriptionProps } from "../../interfaces/DetailsForm";
 
-interface Props {
-  description?: string;
-  onBlur: (input: any) => any;
-  readonly: boolean;
-}
-
-const FormDescription: React.FC<FormDescriptionPros> = (props) => {
+const FormDescription: React.FC<FormDescriptionProps> = (props) => {
   const onBlurHandler = (e: React.FocusEvent<HTMLInputElement>) => {
     props.updateObject({ description: e.target.value });
   };

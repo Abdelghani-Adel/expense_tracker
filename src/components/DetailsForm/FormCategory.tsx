@@ -1,4 +1,4 @@
-import { FormCategoryProps } from "./DetailsFormInterfaces";
+import { FormCategoryProps } from "../../interfaces/DetailsForm";
 
 const FormCategory: React.FC<FormCategoryProps> = (props) => {
   const onChangeHandler = (e: React.ChangeEvent<HTMLSelectElement>) => {
