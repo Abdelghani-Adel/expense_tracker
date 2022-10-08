@@ -15,6 +15,7 @@ const IncomeDetails: React.FC = () => {
   /** Selecting the expense object based on the url parameter which is an ID for the right object */
   /** findIndex() used instead of find() ? using find() directly may return undefined and that is not the right type  */
   const incomesState = useSelector(selectIncomes);
+  console.log(incomesState);
   const incomeIndex = incomesState.findIndex(
     (income) => income.id == Number(params.id)
   );

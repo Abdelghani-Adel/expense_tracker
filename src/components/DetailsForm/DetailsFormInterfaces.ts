@@ -19,7 +19,7 @@ interface InputProps {
 
 export interface DetailsFormProps {
   dataObject: DataObject;
-  categories: Category[];
+  categories: string[];
   dispatchFun: (input: DataObject) => any;
 }
 
@@ -29,7 +29,7 @@ export interface FormAmountProps extends InputProps {
 
 export interface FormCategoryProps extends InputProps {
   category: string;
-  categories: Category[];
+  categories: string[];
 }
 
 export interface FormDescriptionPros extends InputProps {

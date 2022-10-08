@@ -19,8 +19,8 @@ const IncomeCategory: React.FC<AddIncomeInputProps> = (props) => {
         Choose Category
       </option>
       {categories.map((category) => (
-        <option key={category.id} value={category.title}>
-          {category.title}
+        <option key={category} value={category}>
+          {category}
         </option>
       ))}
     </select>

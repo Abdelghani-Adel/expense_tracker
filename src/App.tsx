@@ -14,6 +14,10 @@ import useFetch from "./hooks/useFetch";
 
 import axios from "axios";
 
+const api = axios.create({
+  baseURL: "https://expense-tracker-3996f-default-rtdb.firebaseio.com/",
+});
+
 let isInitial = true;
 
 function App() {
@@ -21,30 +25,29 @@ function App() {
   const dispatch = useDispatch();
 
   /** Updating the firebase income slice whenever it changes here in the state */
-  useEffect(() => {
-    if (isInitial) {
-      isInitial = false;
-      return;
-    }
+  // useEffect(() => {
+  //   if (isInitial) {
+  //     isInitial = false;
+  //     return;
+  //   }
 
-    if (!isInitial) {
-      axios({
-        url: "https://expense-tracker-3996f-default-rtdb.firebaseio.com/incomes.json",
-        method: "put",
-        data: incomesState,
-      });
-    }
-  }, [incomesState]);
+  //   if (!isInitial) {
+  //     axios({
+  //       url: "https://expense-tracker-3996f-default-rtdb.firebaseio.com/incomes.json",
+  //       method: "put",
+  //       data: incomesState,
+  //     });
+  //   }
+  // }, [incomesState]);
 
   /** Getting data from firebase, whith no dependencies[] to make it run only once */
   useEffect(() => {
     const getData = async () => {
-      const response = await axios.get(
-        `https://expense-tracker-3996f-default-rtdb.firebaseio.com/incomes.json`
-      );
+      const response = await api.get(`incomes.json`);
 
       // const newTransactions = Object.entries(response.data);
       dispatch(incomeActions.replaceIncomes(response.data));
+      console.log(response.data);
     };
     getData();
   }, []);

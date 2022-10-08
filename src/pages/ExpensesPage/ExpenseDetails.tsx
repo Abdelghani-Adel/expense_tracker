@@ -33,11 +33,11 @@ const ExpenseDetails: React.FC = () => {
   return (
     <div className="row p-5">
       <h2 className="text-center">Expense Details</h2>
-      <DetailsForm
+      {/* <DetailsForm
         categories={categories}
         dataObject={expense}
         dispatchFun={dispatchFun}
-      />
+      /> */}
     </div>
   );
 };

@@ -8,7 +8,6 @@ import IncomeDescription from "./IncomeDescription";
 import { Store } from "react-notifications-component";
 
 import axios from "axios";
-import { title } from "process";
 
 const AddIncomeForm: React.FC<{ closePortal: () => void }> = (props) => {
   const dispatch = useDispatch();
@@ -48,11 +47,10 @@ const AddIncomeForm: React.FC<{ closePortal: () => void }> = (props) => {
     });
 
     const sendIncome = async () => {
-      const sendRequest = await axios({
-        method: "patch",
-        url: "https://expense-tracker-3996f-default-rtdb.firebaseio.com/incomes.json",
-        data: newIncome,
-      });
+      const sendRequest = await axios.post(
+        "https://expense-tracker-3996f-default-rtdb.firebaseio.com/incomes.json",
+        newIncome
+      );
       console.log(sendRequest);
     };
 

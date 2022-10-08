@@ -14,8 +14,8 @@ const FormCategory: React.FC<FormCategoryProps> = (props) => {
         disabled={props.readonly}
       >
         {props.categories.map((category) => (
-          <option key={category.id} value={category.title}>
-            {category.title}
+          <option key={category} value={category}>
+            {category}
           </option>
         ))}
       </select>
