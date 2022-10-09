@@ -1,18 +1,8 @@
-import {
-  AnyAction,
-  createAsyncThunk,
-  createSlice,
-  Dispatch,
-  PayloadAction,
-  ThunkAction,
-} from "@reduxjs/toolkit";
-import InitialIncomes from "../InitialData/InitialIncomes";
-import { TransactionObject } from "../../interfaces/Transaction";
-import reduxStore, { AppDispatch, RootState } from "../store";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import axios from "axios";
-import { expenseActions } from "./expenseSlice";
-import { Store } from "react-notifications-component";
-import { useDispatch } from "react-redux";
+import { TransactionObject } from "../../interfaces/Transaction";
+import InitialIncomes from "../InitialData/InitialIncomes";
+import { AppDispatch, RootState } from "../store";
 
 const incomeSlice = createSlice({
   name: "incomes",
@@ -25,7 +15,7 @@ const incomeSlice = createSlice({
       state.transctions[action.payload.id] = action.payload;
     },
     removeIncome: (state, action: PayloadAction<number>) => {
-      delete state.transctions[action.payload];
+      delete state.transctions[String(action.payload)];
     },
     editIncome: (state, action: PayloadAction<TransactionObject>) => {
       state.transctions[String(action.payload.id)] = action.payload;
@@ -62,7 +52,7 @@ export const sendIncomesData = (incomesData: any) => {
         "https://expense-tracker-3996f-default-rtdb.firebaseio.com/incomes.json",
         incomesData
       );
-      console.log(response);
+      // console.log(response);
     } catch (e) {
       console.log(e);
     }

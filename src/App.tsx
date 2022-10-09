@@ -38,8 +38,10 @@ function App() {
 
   /** Fetching from Firebase API and update the state with the response */
   useEffect(() => {
-    dispatch(getIncomesData());
-    dispatch(getExpensesData());
+    // dispatch(getIncomesData());
+    // dispatch(getExpensesData());
+    // dispatch(sendIncomesData(incomesState));
+    // dispatch(sendExpensesData(expensesState));
   }, []);
 
   /** Update Firebase API whenever the redux incomes state got updated */

@@ -1,8 +1,8 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import InitialExepses from "../InitialData/InitialExpenses";
-import { TransactionObject } from "../../interfaces/Transaction";
-import { AppDispatch, RootState } from "../store";
 import axios from "axios";
+import { TransactionObject } from "../../interfaces/Transaction";
+import InitialExepses from "../InitialData/InitialExpenses";
+import { AppDispatch, RootState } from "../store";
 
 const expenseSlice = createSlice({
   name: "expenses",
@@ -41,7 +41,7 @@ export const sendExpensesData = (ExpensesData: any) => {
         "https://expense-tracker-3996f-default-rtdb.firebaseio.com/expenses.json",
         ExpensesData
       );
-      console.log(response);
+      // console.log(response);
     } catch (e) {
       console.log(e);
     }
