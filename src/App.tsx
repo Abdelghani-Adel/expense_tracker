@@ -17,7 +17,12 @@ import {
 import { ReactNotifications } from "react-notifications-component";
 
 import axios from "axios";
-import { expenseActions, selectExpenses } from "./redux/slices/expenseSlice";
+import {
+  expenseActions,
+  getExpensesData,
+  selectExpenses,
+  sendExpensesData,
+} from "./redux/slices/expenseSlice";
 import { useAppDispatch } from "./redux/store";
 
 const api = axios.create({
@@ -34,6 +39,7 @@ function App() {
   /** Fetching from Firebase API and update the state with the response */
   useEffect(() => {
     dispatch(getIncomesData());
+    dispatch(getExpensesData());
   }, []);
 
   /** Update Firebase API whenever the redux incomes state got updated */
@@ -43,7 +49,8 @@ function App() {
       return;
     }
     dispatch(sendIncomesData(incomesState));
-  }, [incomesState]);
+    dispatch(sendExpensesData(expensesState));
+  }, [incomesState, expensesState]);
 
   return (
     <div className="App">

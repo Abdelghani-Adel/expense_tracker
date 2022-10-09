@@ -38,22 +38,6 @@ const incomeSlice = createSlice({
   // },
 });
 
-/** Exporting Selectors */
-export const selectIncomes = (state: RootState) => {
-  return Object.values(state.incomes.transctions);
-};
-
-export const selectIncomesCategories = (state: RootState) =>
-  Object.values(state.incomes.categories);
-
-export const selectTotalIncomes = (state: RootState) => {
-  let totalIncomes = 0;
-  const transactionsArray = Object.values(state.incomes.transctions);
-  transactionsArray.map((income) => (totalIncomes += Number(income.amount)));
-
-  return totalIncomes;
-};
-
 /** Get Thunk */
 // export const getAsyncData = createAsyncThunk("", async () => {
 //   const response = await axios.get(
@@ -83,6 +67,22 @@ export const sendIncomesData = (incomesData: any) => {
       console.log(e);
     }
   };
+};
+
+/** Exporting Selectors */
+export const selectIncomes = (state: RootState) => {
+  return Object.values(state.incomes.transctions);
+};
+
+export const selectIncomesCategories = (state: RootState) =>
+  Object.values(state.incomes.categories);
+
+export const selectTotalIncomes = (state: RootState) => {
+  let totalIncomes = 0;
+  const transactionsArray = Object.values(state.incomes.transctions);
+  transactionsArray.map((income) => (totalIncomes += Number(income.amount)));
+
+  return totalIncomes;
 };
 
 /** Exporting slice and actions */
