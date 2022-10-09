@@ -7,11 +7,18 @@ import ExpenseDetails from "./pages/ExpensesPage/ExpenseDetails";
 import ExpensesPage from "./pages/ExpensesPage/ExpensesPage";
 import IncomeDetails from "./pages/IncomesPage/IncomeDetails";
 import IncomesPage from "./pages/IncomesPage/IncomesPage";
-import { incomeActions, selectIncomes } from "./redux/slices/incomeSlice";
+import {
+  getIncomesData,
+  incomeActions,
+  selectIncomes,
+  sendIncomesData,
+} from "./redux/slices/incomeSlice";
 
 import { ReactNotifications } from "react-notifications-component";
 
 import axios from "axios";
+import { expenseActions, selectExpenses } from "./redux/slices/expenseSlice";
+import { useAppDispatch } from "./redux/store";
 
 const api = axios.create({
   baseURL: "https://expense-tracker-3996f-default-rtdb.firebaseio.com/",
@@ -21,35 +28,22 @@ let isInitial = true;
 
 function App() {
   const incomesState = useSelector(selectIncomes);
-  const dispatch = useDispatch();
+  const expensesState = useSelector(selectExpenses);
+  const dispatch = useAppDispatch();
 
-  /** Updating the firebase income slice whenever it changes here in the state */
-  // useEffect(() => {
-  //   if (isInitial) {
-  //     isInitial = false;
-  //     return;
-  //   }
-
-  //   if (!isInitial) {
-  //     axios({
-  //       url: "https://expense-tracker-3996f-default-rtdb.firebaseio.com/incomes.json",
-  //       method: "put",
-  //       data: incomesState,
-  //     });
-  //   }
-  // }, [incomesState]);
-
-  /** Getting data from firebase, whith no dependencies[] to make it run only once */
+  /** Fetching from Firebase API and update the state with the response */
   useEffect(() => {
-    const getData = async () => {
-      const response = await api.get(`incomes.json`);
-
-      // const newTransactions = Object.entries(response.data);
-      dispatch(incomeActions.replaceIncomes(response.data));
-      // console.log(response.data);
-    };
-    // getData();
+    dispatch(getIncomesData());
   }, []);
+
+  /** Update Firebase API whenever the redux incomes state got updated */
+  useEffect(() => {
+    if (isInitial) {
+      isInitial = false;
+      return;
+    }
+    dispatch(sendIncomesData(incomesState));
+  }, [incomesState]);
 
   return (
     <div className="App">

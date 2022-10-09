@@ -7,6 +7,9 @@ const expenseSlice = createSlice({
   name: "expenses",
   initialState: InitialExepses,
   reducers: {
+    replaceExpenses: (state, action) => {
+      state.transactions = action.payload;
+    },
     addExpense: (state, action: PayloadAction<TransactionObject>) => {
       state.transactions[action.payload.id] = action.payload;
     },

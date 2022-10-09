@@ -8,6 +8,7 @@ import TransactionCategory from "./TransactionCategory";
 import TransactionDesctiption from "./TransactionDescription";
 import TransactionType from "./TransactionType";
 import { Store } from "react-notifications-component";
+import axios from "axios";
 
 const AddTransactionForm: React.FC<{ closePortal: () => void }> = (props) => {
   const dispatch = useDispatch();
@@ -38,6 +39,11 @@ const AddTransactionForm: React.FC<{ closePortal: () => void }> = (props) => {
     if (transactionType === "Expense") {
       dispatch(expenseActions.addExpense(newTransaction));
 
+      axios.post(
+        "https://expense-tracker-3996f-default-rtdb.firebaseio.com/expenses.json",
+        newTransaction
+      );
+
       Store.addNotification({
         title: "Expense added successfully !",
         message: "Thank you",
@@ -52,7 +58,14 @@ const AddTransactionForm: React.FC<{ closePortal: () => void }> = (props) => {
         },
       });
     } else if (transactionType === "Income") {
+      /** Dispatch the update to redux */
       dispatch(incomeActions.addIncome(newTransaction));
+
+      /** Posting the update to firebase database */
+      // axios.post(
+      //   "https://expense-tracker-3996f-default-rtdb.firebaseio.com/incomes.json",
+      //   newTransaction
+      // );
 
       Store.addNotification({
         title: "Income added successfully !",

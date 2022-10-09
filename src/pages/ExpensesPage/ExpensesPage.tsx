@@ -9,8 +9,6 @@ import ExpensesCategoryFilter from "./ExpensesCategoryFilter";
 import ExpensesTable from "./ExpensesTable";
 
 const ExpensesPage = () => {
-  /** Constructing an array of strings that holds the categories I want to show */
-  let categories: string[] = [];
   /** Mapping through categories objects to pull out only the title and push it to the array of strings */
   const categoriesState = useSelector(selectExpensesCategories);
 
