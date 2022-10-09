@@ -42,7 +42,7 @@ function App() {
     // dispatch(getExpensesData());
     // dispatch(sendIncomesData(incomesState));
     // dispatch(sendExpensesData(expensesState));
-  }, []);
+  });
 
   /** Update Firebase API whenever the redux incomes state got updated */
   useEffect(() => {
