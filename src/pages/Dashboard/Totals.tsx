@@ -12,9 +12,9 @@ const Totals = () => {
   const dispatch = useDispatch();
 
   /** The bug has been fixed */
-  // let totalExpenses = useSelector(selectTotalExpenses);
-  // let totalIncomes = useSelector(selectTotalIncomes);
-  // let balance = totalIncomes - totalExpenses;
+  let totalExpenses = useSelector(selectTotalExpenses);
+  let totalIncomes = useSelector(selectTotalIncomes);
+  let balance = totalIncomes - totalExpenses;
 
   /** Handlers to navigate to the right page, either expenses or incomes */
   const onClickIncomes = () => navigate("/incomes");
@@ -27,19 +27,19 @@ const Totals = () => {
         <div className="col-md-3 cursor--pointer" onClick={onClickIncomes}>
           <div className="border border-2 rounded p-1 text-success">
             <h4 className="text-secondary fw-bold">Incomes</h4>
-            {/* <p className="display-6 fw-bolder">{totalIncomes}$</p> */}
+            <p className="display-6 fw-bolder">{totalIncomes}$</p>
           </div>
         </div>
         <div className="col-md-3 cursor--pointer" onClick={onClickExpenses}>
           <div className="border border-2 rounded p-1 text-danger">
             <h4 className="text-secondary fw-bold">Expenses</h4>
-            {/* <p className="display-6 fw-bolder">{totalExpenses}$</p> */}
+            <p className="display-6 fw-bolder">{totalExpenses}$</p>
           </div>
         </div>
         <div className="col-md-3 cursor--pointer">
           <div className="border border-2 rounded p-1 text-primary">
             <h4 className="text-secondary fw-bold">Balance</h4>
-            {/* <p className="display-6 fw-bolder">{balance}$</p> */}
+            <p className="display-6 fw-bolder">{balance}$</p>
           </div>
         </div>
       </div>
